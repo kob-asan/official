@@ -1630,3 +1630,172 @@
     line-height: 1.8;
 
 }
+
+.post-terminal-interactive-output {
+
+    padding:
+        1.4rem
+        1.5rem
+        0;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: .92rem;
+
+    line-height: 1.45;
+
+    white-space: pre-wrap;
+
+    word-break: break-word;
+
+    color: #8AFF5C;
+
+}
+
+.post-terminal-interactive-output
+.terminal-command {
+
+    color: #8AFF5C;
+
+}
+
+.post-terminal-interactive-output
+.terminal-output {
+
+    color: #8AFF5C;
+
+}
+
+.post-terminal-interactive-input {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: .5rem;
+
+    padding:
+        0
+        1.5rem
+        1.4rem;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: .92rem;
+
+    line-height: 1.45;
+
+    color: #8AFF5C;
+
+}
+
+.terminal-interactive-prompt {
+
+    flex-shrink: 0;
+
+    color: #8AFF5C;
+
+    user-select: none;
+
+}
+
+.post-terminal-interactive-input input {
+
+    flex: 1;
+
+    width: 100%;
+
+    min-width: 0;
+
+    margin: 0;
+
+    padding: 0;
+
+    border: 0;
+
+    outline: 0;
+
+    appearance: none;
+
+    -webkit-appearance: none;
+
+    background: transparent;
+
+    color: #8AFF5C !important;
+
+    -webkit-text-fill-color: #8AFF5C;
+
+    caret-color: #8AFF5C;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: .92rem;
+
+    font-weight: 400;
+
+    line-height: 1.45;
+
+    text-align: left;
+
+    box-shadow: none;
+
+}
+
+.post-terminal-interactive-input input:focus {
+
+    color: #8AFF5C !important;
+
+    -webkit-text-fill-color: #8AFF5C;
+
+    outline: none;
+
+    box-shadow: none;
+
+}
+
+.post-terminal-interactive-input input::placeholder {
+
+    color: #8AFF5C;
+
+    -webkit-text-fill-color: #8AFF5C;
+
+    opacity: 1;
+
+}
+
+.post-terminal-interactive-input input::selection {
+
+    color: #8AFF5C;
+
+    -webkit-text-fill-color: #8AFF5C;
+
+    background:
+        rgba(138,255,92,.2);
+
+}
+
+@media (max-width: 768px) {
+
+    .post-terminal-interactive-output {
+
+        padding-left: 1rem;
+
+        padding-right: 1rem;
+
+    }
+
+    .post-terminal-interactive-input {
+
+        padding-left: 1rem;
+
+        padding-right: 1rem;
+
+    }
+
+}
