@@ -182,6 +182,22 @@ function createBlock(block) {
 
             return createNext(block);
 
+        case "definition":
+
+            return createDefinition(block);
+
+        case "word":
+
+            return createWord(block);
+
+        case "example":
+
+            return createExample(block);
+
+        case "question":
+
+            return createQuestion(block);
+
         default:
 
             return document.createElement("div");
@@ -936,5 +952,281 @@ function createNext(block) {
     `;
 
     return section;
+
+}
+
+function createDefinition(block) {
+
+    const definition =
+        document.createElement("div");
+
+    definition.className =
+        "post-definition fade-in";
+
+
+    const term =
+        document.createElement("strong");
+
+    term.className =
+        "post-definition-term";
+
+    term.textContent =
+        block.term;
+
+
+    const text =
+        document.createElement("span");
+
+    text.className =
+        "post-definition-text";
+
+    text.textContent =
+        block.text;
+
+
+    definition.appendChild(term);
+
+    definition.appendChild(text);
+
+
+    return definition;
+
+}
+
+function createWord(block) {
+
+    const wrapper =
+        document.createElement("div");
+
+    wrapper.className =
+        "post-word fade-in";
+
+
+    block.items.forEach(item => {
+
+        const row =
+            document.createElement("div");
+
+        row.className =
+            "post-word-row";
+
+
+        const partOfSpeech =
+            document.createElement("span");
+
+        partOfSpeech.className =
+            "post-word-part";
+
+        partOfSpeech.textContent =
+            item.partOfSpeech;
+
+
+        const term =
+            document.createElement("span");
+
+        term.className =
+            "post-word-term";
+
+        term.textContent =
+            item.word;
+
+
+        const meaning =
+            document.createElement("span");
+
+        meaning.className =
+            "post-word-meaning";
+
+        meaning.textContent =
+            item.meaning;
+
+
+        row.appendChild(partOfSpeech);
+
+        row.appendChild(term);
+
+        row.appendChild(meaning);
+
+
+        wrapper.appendChild(row);
+
+    });
+
+
+    return wrapper;
+
+}
+
+function createExample(block) {
+
+    const example =
+        document.createElement("div");
+
+    example.className =
+        "post-example fade-in";
+
+
+    const title =
+        document.createElement("div");
+
+    title.className =
+        "post-example-title";
+
+    title.textContent =
+        block.title ?? "例題";
+
+
+    const question =
+        document.createElement("div");
+
+    question.className =
+        "post-example-question";
+
+    question.textContent =
+        block.question;
+
+
+    const answer =
+        document.createElement("div");
+
+    answer.className =
+        "post-example-answer";
+
+    answer.textContent =
+        block.answer;
+
+
+    const explanation =
+        document.createElement("div");
+
+    explanation.className =
+        "post-example-explanation";
+
+    explanation.textContent =
+        block.explanation;
+
+
+    example.appendChild(title);
+
+    example.appendChild(question);
+
+    example.appendChild(answer);
+
+    example.appendChild(explanation);
+
+
+    return example;
+
+}
+
+function createQuestion(block) {
+
+    const question =
+        document.createElement("div");
+
+    question.className =
+        "post-question fade-in";
+
+
+    const title =
+        document.createElement("div");
+
+    title.className =
+        "post-question-title";
+
+    title.textContent =
+        block.number ?? "CHECK";
+
+
+    const text =
+        document.createElement("div");
+
+    text.className =
+        "post-question-text";
+
+    text.textContent =
+        block.question;
+
+
+    const button =
+        document.createElement("button");
+
+    button.className =
+        "post-question-button";
+
+    button.type =
+        "button";
+
+    button.textContent =
+        "答えを見る";
+
+
+    const answer =
+        document.createElement("div");
+
+    answer.className =
+        "post-question-answer";
+
+
+    const answerText =
+        document.createElement("div");
+
+    answerText.className =
+        "post-question-answer-text";
+
+    answerText.textContent =
+        block.answer;
+
+
+    const explanation =
+        document.createElement("div");
+
+    explanation.className =
+        "post-question-explanation";
+
+    explanation.textContent =
+        block.explanation ?? "";
+
+
+    answer.appendChild(answerText);
+
+
+    if (block.explanation) {
+
+        answer.appendChild(explanation);
+
+    }
+
+
+    button.addEventListener("click", () => {
+
+        const isOpen =
+            answer.classList.contains("active");
+
+
+        answer.classList.toggle(
+            "active",
+            !isOpen
+        );
+
+
+        button.textContent =
+            isOpen
+                ? "答えを見る"
+                : "答えを隠す";
+
+    });
+
+
+    question.appendChild(title);
+
+    question.appendChild(text);
+
+    question.appendChild(button);
+
+    question.appendChild(answer);
+
+
+    return question;
 
 }
