@@ -117,7 +117,8 @@
         "type": "terminal-interactive",
         "prompt": "kob_asan@site:~$",
         "commands": {
-        "help": "Available commands: whoami, pwd, ls, cd, cat, echo, date, time, birth, age, version, status, uptime, site, author, location, language, design, stack, os, browser, github, projects, works, study, coffee, mood, weather, ping, neofetch, about, clear","whoami": "Kob_asan",
+        "help": "Available commands: whoami, pwd, ls, cd, cat, clock, echo, date, time, birth, age, version, status, uptime, site, author, location, language, design, stack, os, browser, github, projects, works, study, coffee, mood, weather, ping, neofetch, about, clear,",
+        "whoami": "Kob_asan",
         "pwd": "/home/kob_asan",
         "ls": "Desktop  Documents  Downloads  Projects  Works  Website",
         "cd": "bash: cd: permission denied",
