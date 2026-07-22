@@ -1358,6 +1358,22 @@ function createInteractiveTerminal(block) {
 
         }
 
+        if (value === "clock") {
+            
+            createClockModal();
+            
+            return;
+        
+        }
+
+        if (value === "weather") {
+            
+            createWeatherModal();
+            
+            return;
+        
+        }
+
 
         const result =
             document.createElement("div");
@@ -1479,5 +1495,545 @@ function createInteractiveTerminal(block) {
 
 
     return terminal;
+
+}
+
+function createClockModal() {
+
+    const existing =
+        document.querySelector(
+            ".post-clock-modal"
+        );
+
+    if (existing) {
+
+        existing.remove();
+
+        return;
+
+    }
+
+
+    const modal =
+        document.createElement("div");
+
+    modal.className =
+        "post-clock-modal";
+
+
+    const backdrop =
+        document.createElement("div");
+
+    backdrop.className =
+        "post-clock-backdrop";
+
+
+    const card =
+        document.createElement("div");
+
+    card.className =
+        "post-clock-card";
+
+
+    const close =
+        document.createElement("button");
+
+    close.className =
+        "post-clock-close";
+
+    close.textContent =
+        "×";
+
+
+    const label =
+        document.createElement("div");
+
+    label.className =
+        "post-clock-label";
+
+    label.textContent =
+        "CURRENT TIME";
+
+
+    const time =
+        document.createElement("div");
+
+    time.className =
+        "post-clock-time";
+
+
+    const date =
+        document.createElement("div");
+
+    date.className =
+        "post-clock-date";
+
+
+    card.appendChild(close);
+
+    card.appendChild(label);
+
+    card.appendChild(time);
+
+    card.appendChild(date);
+
+
+    modal.appendChild(backdrop);
+
+    modal.appendChild(card);
+
+
+    document.body.appendChild(
+        modal
+    );
+
+
+    function updateClock() {
+
+        const now =
+            new Date();
+
+
+        time.textContent =
+            now.toLocaleTimeString(
+                "ja-JP",
+                {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    second: "2-digit",
+                    hour12: false
+                }
+            );
+
+
+        date.textContent =
+            now.toLocaleDateString(
+                "ja-JP",
+                {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                    weekday: "long"
+                }
+            );
+
+    }
+
+
+    updateClock();
+
+
+    const interval =
+        setInterval(
+            updateClock,
+            1000
+        );
+
+
+    function closeModal() {
+
+        clearInterval(
+            interval
+        );
+
+        modal.remove();
+
+    }
+
+
+    close.addEventListener(
+        "click",
+        closeModal
+    );
+
+
+    backdrop.addEventListener(
+        "click",
+        closeModal
+    );
+
+
+    document.addEventListener(
+        "keydown",
+        function handleKey(event) {
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                closeModal();
+
+                document.removeEventListener(
+                    "keydown",
+                    handleKey
+                );
+
+            }
+
+        }
+    );
+
+}
+
+async function createWeatherModal() {
+
+    const existing =
+        document.querySelector(
+            ".post-weather-modal"
+        );
+
+    if (existing) {
+
+        existing.remove();
+
+        return;
+
+    }
+
+
+    const modal =
+        document.createElement("div");
+
+    modal.className =
+        "post-weather-modal";
+
+
+    const backdrop =
+        document.createElement("div");
+
+    backdrop.className =
+        "post-weather-backdrop";
+
+
+    const card =
+        document.createElement("div");
+
+    card.className =
+        "post-weather-card";
+
+
+    const close =
+        document.createElement("button");
+
+    close.className =
+        "post-weather-close";
+
+    close.textContent =
+        "×";
+
+
+    const location =
+        document.createElement("div");
+
+    location.className =
+        "post-weather-location";
+
+    location.textContent =
+        "TOKYO";
+
+
+    const icon =
+        document.createElement("div");
+
+    icon.className =
+        "post-weather-icon";
+
+
+    const temperature =
+        document.createElement("div");
+
+    temperature.className =
+        "post-weather-temperature";
+
+
+    const condition =
+        document.createElement("div");
+
+    condition.className =
+        "post-weather-condition";
+
+
+    const details =
+        document.createElement("div");
+
+    details.className =
+        "post-weather-details";
+
+
+    const updated =
+        document.createElement("div");
+
+    updated.className =
+        "post-weather-updated";
+
+
+    card.appendChild(close);
+
+    card.appendChild(location);
+
+    card.appendChild(icon);
+
+    card.appendChild(temperature);
+
+    card.appendChild(condition);
+
+    card.appendChild(details);
+
+    card.appendChild(updated);
+
+
+    modal.appendChild(backdrop);
+
+    modal.appendChild(card);
+
+
+    document.body.appendChild(
+        modal
+    );
+
+
+    function weatherInfo(code) {
+
+        if (code === 0) {
+
+            return {
+                icon: "☀",
+                text: "CLEAR SKY"
+            };
+
+        }
+
+        if (
+            code === 1 ||
+            code === 2
+        ) {
+
+            return {
+                icon: "◐",
+                text: "PARTLY CLOUDY"
+            };
+
+        }
+
+        if (code === 3) {
+
+            return {
+                icon: "☁",
+                text: "OVERCAST"
+            };
+
+        }
+
+        if (
+            code >= 45 &&
+            code <= 48
+        ) {
+
+            return {
+                icon: "≋",
+                text: "FOGGY"
+            };
+
+        }
+
+        if (
+            code >= 51 &&
+            code <= 67
+        ) {
+
+            return {
+                icon: "雨",
+                text: "RAIN"
+            };
+
+        }
+
+        if (
+            code >= 71 &&
+            code <= 77
+        ) {
+
+            return {
+                icon: "❄",
+                text: "SNOW"
+            };
+
+        }
+
+        if (
+            code >= 80 &&
+            code <= 82
+        ) {
+
+            return {
+                icon: "雨",
+                text: "SHOWERS"
+            };
+
+        }
+
+        if (
+            code >= 95
+        ) {
+
+            return {
+                icon: "⚡",
+                text: "THUNDERSTORM"
+            };
+
+        }
+
+        return {
+            icon: "—",
+            text: "UNKNOWN"
+        };
+
+    }
+
+
+    try {
+
+        const response =
+            await fetch(
+                "https://api.open-meteo.com/v1/forecast" +
+                "?latitude=35.6895" +
+                "&longitude=139.6917" +
+                "&current=" +
+                "temperature_2m," +
+                "apparent_temperature," +
+                "relative_humidity_2m," +
+                "weather_code," +
+                "wind_speed_10m" +
+                "&timezone=Asia%2FTokyo"
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Weather API Error"
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        const current =
+            data.current;
+
+
+        const weather =
+            weatherInfo(
+                current.weather_code
+            );
+
+
+        icon.textContent =
+            weather.icon;
+
+
+        temperature.textContent =
+            `${Math.round(
+                current.temperature_2m
+            )}°`;
+
+
+        condition.textContent =
+            weather.text;
+
+
+        details.innerHTML = `
+            <span>
+                FEELS LIKE
+                ${Math.round(
+                    current.apparent_temperature
+                )}°
+            </span>
+
+            <span>
+                WIND
+                ${Math.round(
+                    current.wind_speed_10m
+                )} km/h
+            </span>
+
+            <span>
+                HUMIDITY
+                ${Math.round(
+                    current.relative_humidity_2m
+                )}%
+            </span>
+        `;
+
+
+        updated.textContent =
+            `UPDATED ${new Date(
+                current.time
+            ).toLocaleTimeString(
+                "en-US",
+                {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    hour12: false
+                }
+            )}`;
+
+    } catch (error) {
+
+        console.error(error);
+
+        icon.textContent =
+            "—";
+
+        condition.textContent =
+            "UNAVAILABLE";
+
+        updated.textContent =
+            "WEATHER DATA UNAVAILABLE";
+
+    }
+
+
+    function closeModal() {
+
+        modal.remove();
+
+    }
+
+
+    close.addEventListener(
+        "click",
+        closeModal
+    );
+
+
+    backdrop.addEventListener(
+        "click",
+        closeModal
+    );
+
+
+    document.addEventListener(
+        "keydown",
+        function handleKey(event) {
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                closeModal();
+
+                document.removeEventListener(
+                    "keydown",
+                    handleKey
+                );
+
+            }
+
+        }
+    );
 
 }
