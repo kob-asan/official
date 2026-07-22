@@ -2247,3 +2247,440 @@
     }
 
 }
+
+.post-timer-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+.post-timer-backdrop {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(0,0,0,.68);
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+}
+
+
+.post-timer-card {
+
+    position: relative;
+
+    z-index: 1;
+
+    width:
+        min(
+            520px,
+            calc(100% - 2rem)
+        );
+
+    padding:
+        3.5rem
+        3rem;
+
+    background:
+        rgba(15,15,15,.94);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,.5);
+
+    text-align: center;
+
+    animation:
+        postTimerModalIn
+        .35s
+        ease
+        both;
+
+}
+
+
+.post-timer-close {
+
+    position: absolute;
+
+    top: 1rem;
+
+    right: 1rem;
+
+    width:
+        2.2rem;
+
+    height:
+        2.2rem;
+
+    padding: 0;
+
+    border: none;
+
+    background:
+        transparent;
+
+    color:
+        var(--color-text-muted);
+
+    font-size:
+        1.6rem;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        color .2s ease;
+
+}
+
+
+.post-timer-close:hover {
+
+    color:
+        var(--color-text);
+
+}
+
+
+.post-timer-label {
+
+    color:
+        var(--color-primary);
+
+    font-size:
+        .72rem;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        .25em;
+
+}
+
+
+.post-timer-display {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    margin-top:
+        2rem;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size:
+        clamp(
+            4rem,
+            12vw,
+            6rem
+        );
+
+    line-height:
+        1;
+
+    color:
+        var(--color-text);
+
+}
+
+
+.post-timer-display input {
+
+    width:
+        2.5ch;
+
+    padding:
+        0;
+
+    border:
+        none;
+
+    outline:
+        none;
+
+    background:
+        transparent;
+
+    color:
+        var(--color-text);
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size:
+        inherit;
+
+    line-height:
+        inherit;
+
+    text-align:
+        center;
+
+    caret-color:
+        var(--color-primary);
+
+    transition:
+        color .2s ease;
+
+}
+
+
+.post-timer-display input:focus {
+
+    color:
+        var(--color-primary);
+
+}
+
+
+.post-timer-display input:disabled {
+
+    opacity:
+        .65;
+
+    cursor:
+        default;
+
+}
+
+
+.post-timer-display input::-webkit-inner-spin-button,
+.post-timer-display input::-webkit-outer-spin-button {
+
+    appearance:
+        none;
+
+    margin:
+        0;
+
+}
+
+
+.post-timer-display input {
+
+    -moz-appearance:
+        textfield;
+
+}
+
+
+.post-timer-colon {
+
+    color:
+        var(--color-text-muted);
+
+    user-select:
+        none;
+
+}
+
+
+.post-timer-controls {
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    gap:
+        .75rem;
+
+    margin-top:
+        2.5rem;
+
+}
+
+
+.post-timer-controls button {
+
+    min-width:
+        72px;
+
+    padding:
+        .7rem
+        1.2rem;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.04);
+
+    color:
+        var(--color-text-light);
+
+    font-family:
+        inherit;
+
+    font-size:
+        .75rem;
+
+    letter-spacing:
+        .08em;
+
+    cursor:
+        pointer;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        color .2s ease;
+
+}
+
+
+.post-timer-controls button:hover {
+
+    border-color:
+        var(--color-primary);
+
+    background:
+        rgba(60,160,255,.06);
+
+    color:
+        var(--color-primary);
+
+}
+
+
+.post-timer-start:hover {
+
+    background:
+        rgba(60,160,255,.1);
+
+}
+
+
+.post-timer-status {
+
+    min-height:
+        1rem;
+
+    margin-top:
+        1.5rem;
+
+    color:
+        var(--color-primary);
+
+    font-size:
+        .7rem;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        .18em;
+
+}
+
+
+@keyframes postTimerModalIn {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+            scale(.96)
+            translateY(10px);
+
+    }
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            scale(1)
+            translateY(0);
+
+    }
+
+}
+
+
+@media (
+    max-width: 768px
+) {
+
+    .post-timer-card {
+
+        width:
+            calc(100% - 2rem);
+
+        padding:
+            3rem
+            1.5rem;
+
+    }
+
+
+    .post-timer-display {
+
+        font-size:
+            clamp(
+                3.2rem,
+                18vw,
+                5rem
+            );
+
+    }
+
+
+    .post-timer-controls {
+
+        gap:
+            .5rem;
+
+    }
+
+
+    .post-timer-controls button {
+
+        min-width:
+            0;
+
+        padding:
+            .7rem
+            .8rem;
+
+    }
+
+}
