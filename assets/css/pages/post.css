@@ -2684,3 +2684,73 @@
     }
 
 }
+
+.post-matrix-effect {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9998;
+
+    width: 100vw;
+
+    height: 100vh;
+
+    display: block;
+
+    background: #000;
+
+    opacity: 1;
+
+    pointer-events: none;
+
+    animation:
+        postMatrixIn
+        .4s
+        ease
+        both;
+
+}
+
+.post-matrix-fade {
+
+    animation:
+        postMatrixFade
+        1s
+        ease
+        forwards;
+
+}
+
+@keyframes postMatrixIn {
+
+    from {
+
+        opacity: 0;
+
+    }
+
+    to {
+
+        opacity: 1;
+
+    }
+
+}
+
+@keyframes postMatrixFade {
+
+    from {
+
+        opacity: 1;
+
+    }
+
+    to {
+
+        opacity: 0;
+
+    }
+
+}
