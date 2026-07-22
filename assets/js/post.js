@@ -1388,6 +1388,14 @@ function createInteractiveTerminal(block) {
             return;
         
         }
+       
+       if (value === "2048") {
+          
+          create2048Modal();
+          
+          return;
+       
+       }
 
         const result =
             document.createElement("div");
@@ -2897,3 +2905,111 @@ function createMatrixEffect() {
     );
 
 }
+
+let touchStartX = 0;
+
+let touchStartY = 0;
+
+
+board.addEventListener(
+    "touchstart",
+    event => {
+
+        const touch =
+            event.touches[0];
+
+        touchStartX =
+            touch.clientX;
+
+        touchStartY =
+            touch.clientY;
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+board.addEventListener(
+    "touchend",
+    event => {
+
+        const touch =
+            event.changedTouches[0];
+
+        const deltaX =
+            touch.clientX
+            - touchStartX;
+
+        const deltaY =
+            touch.clientY
+            - touchStartY;
+
+
+        const minSwipe =
+            30;
+
+
+        if (
+            Math.abs(deltaX)
+            <
+            minSwipe
+            &&
+            Math.abs(deltaY)
+            <
+            minSwipe
+        ) {
+
+            return;
+
+        }
+
+
+        if (
+            Math.abs(deltaX)
+            >
+            Math.abs(deltaY)
+        ) {
+
+            if (
+                deltaX > 0
+            ) {
+
+                move(
+                    "right"
+                );
+
+            } else {
+
+                move(
+                    "left"
+                );
+
+            }
+
+        } else {
+
+            if (
+                deltaY > 0
+            ) {
+
+                move(
+                    "down"
+                );
+
+            } else {
+
+                move(
+                    "up"
+                );
+
+            }
+
+        }
+
+    },
+    {
+        passive: true
+    }
+);
