@@ -102,6 +102,54 @@
       "course": "HTML･CSS･JS基礎講座③",
       "date": "2026年7月22日",
       "description": "次回は、HTMLを実際にかくやり方をより詳しく説明して行きます。"
+    },
+
+    {
+      "type": "divider"
+    },
+        
+    {
+      "type": "paragraph",
+      "text": "おまけ。動くターミナル。(擬似)helpでコマンド一覧を見ることができます。"
+    },
+    
+    {
+        "type": "terminal-interactive",
+        "prompt": "kob_asan@site:~$",
+        "commands": {
+        "help": "Available commands: whoami, pwd, ls, cd, cat, echo, date, time, birth, age, version, status, uptime, site, author, location, language, design, stack, os, browser, github, projects, works, study, coffee, mood, weather, ping, neofetch, about, clear","whoami": "Kob_asan",
+        "pwd": "/home/kob_asan",
+        "ls": "Desktop  Documents  Downloads  Projects  Works  Website",
+        "cd": "bash: cd: permission denied",
+        "cat": "Usage: cat [filename]",
+        "echo": "Usage: echo [message]",
+        "date": "Checking date...",
+        "time": "Checking time...",
+        "birth": "07/21",
+        "age": "15",
+        "version": "Kob_asan Official Site v2.0",
+        "status": "ONLINE",
+        "uptime": "99.99%",
+        "site": "Kob_asan Official Site",
+        "author": "Kob_asan",
+        "location": "Tokyo, Japan",
+        "language": "Japanese / English",
+        "design": "素晴らしい",
+        "stack": "HTML / CSS / JavaScript / JSON",
+        "os": "macOS",
+        "browser": "Unknown",
+        "github": "github.com/kob-asan",
+        "projects": "Kob_asan Official Site",
+        "works": "Loading works...",
+        "study": "まあこれも野球です。(?)",
+        "coffee": "☕ Coffee.exe is running.",
+        "mood": "Currently: Coding",
+        "weather": "Checking weather...",
+        "ping": "PONG!",
+        "neofetch": "Kob_asan OS\n────────────\nOS: macOS\nShell: zsh\nBrowser: Chrome\nTheme: Dark\nEditor: VS Code\nStatus: ONLINE",
+        "about": "Welcome to Kob_asan Official Site.",
+        "clear": ""
+        }
     }
   ]
 }
