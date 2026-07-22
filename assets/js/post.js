@@ -3013,3 +3013,856 @@ board.addEventListener(
         passive: true
     }
 );
+
+function create2048Modal() {
+
+    const existing =
+        document.querySelector(
+            ".post-2048-modal"
+        );
+
+    if (existing) {
+
+        existing.remove();
+
+        return;
+
+    }
+
+
+    const modal =
+        document.createElement("div");
+
+    modal.className =
+        "post-2048-modal";
+
+
+    const backdrop =
+        document.createElement("div");
+
+    backdrop.className =
+        "post-2048-backdrop";
+
+
+    const card =
+        document.createElement("div");
+
+    card.className =
+        "post-2048-card";
+
+
+    const header =
+        document.createElement("div");
+
+    header.className =
+        "post-2048-header";
+
+
+    const title =
+        document.createElement("div");
+
+    title.className =
+        "post-2048-title";
+
+    title.textContent =
+        "2048";
+
+
+    const close =
+        document.createElement("button");
+
+    close.className =
+        "post-2048-close";
+
+    close.type =
+        "button";
+
+    close.textContent =
+        "×";
+
+
+    header.appendChild(
+        title
+    );
+
+    header.appendChild(
+        close
+    );
+
+
+    const top =
+        document.createElement("div");
+
+    top.className =
+        "post-2048-top";
+
+
+    const score =
+        document.createElement("div");
+
+    score.className =
+        "post-2048-score";
+
+    score.innerHTML = `
+        <span>SCORE</span>
+        <strong>0</strong>
+    `;
+
+
+    const restart =
+        document.createElement("button");
+
+    restart.className =
+        "post-2048-restart";
+
+    restart.type =
+        "button";
+
+    restart.textContent =
+        "NEW GAME";
+
+
+    top.appendChild(
+        score
+    );
+
+    top.appendChild(
+        restart
+    );
+
+
+    const board =
+        document.createElement("div");
+
+    board.className =
+        "post-2048-board";
+
+    board.tabIndex =
+        0;
+
+
+    const message =
+        document.createElement("div");
+
+    message.className =
+        "post-2048-message";
+
+
+    card.appendChild(
+        header
+    );
+
+    card.appendChild(
+        top
+    );
+
+    card.appendChild(
+        board
+    );
+
+    card.appendChild(
+        message
+    );
+
+
+    modal.appendChild(
+        backdrop
+    );
+
+    modal.appendChild(
+        card
+    );
+
+
+    document.body.appendChild(
+        modal
+    );
+
+
+    let grid = [];
+
+    let currentScore = 0;
+
+
+    function createEmptyGrid() {
+
+        return Array.from(
+            {
+                length: 4
+            },
+            () =>
+                Array(4).fill(0)
+        );
+
+    }
+
+
+    function addRandomTile() {
+
+        const empty = [];
+
+
+        grid.forEach(
+            (row, y) => {
+
+                row.forEach(
+                    (value, x) => {
+
+                        if (
+                            value === 0
+                        ) {
+
+                            empty.push(
+                                {
+                                    x,
+                                    y
+                                }
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+
+        if (
+            empty.length === 0
+        ) {
+
+            return;
+
+        }
+
+
+        const position =
+            empty[
+                Math.floor(
+                    Math.random()
+                    * empty.length
+                )
+            ];
+
+
+        grid[
+            position.y
+        ][
+            position.x
+        ] =
+            Math.random() < .9
+                ? 2
+                : 4;
+
+    }
+
+
+    function render() {
+
+        board.innerHTML =
+            "";
+
+
+        grid.forEach(
+            (row, y) => {
+
+                row.forEach(
+                    (value, x) => {
+
+                        const tile =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        tile.className =
+                            "post-2048-tile";
+
+
+                        if (
+                            value > 0
+                        ) {
+
+                            tile.dataset.value =
+                                value;
+
+                            tile.textContent =
+                                value;
+
+                        }
+
+
+                        board.appendChild(
+                            tile
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+        score
+            .querySelector(
+                "strong"
+            )
+            .textContent =
+            currentScore;
+
+    }
+
+
+    function startGame() {
+
+        grid =
+            createEmptyGrid();
+
+
+        currentScore =
+            0;
+
+
+        message.classList.remove(
+            "active"
+        );
+
+
+        message.textContent =
+            "";
+
+
+        addRandomTile();
+
+        addRandomTile();
+
+
+        render();
+
+
+        board.focus();
+
+    }
+
+
+    function slide(row) {
+
+        const filtered =
+            row.filter(
+                value =>
+                    value !== 0
+            );
+
+
+        const result = [];
+
+        let gained = 0;
+
+
+        for (
+            let i = 0;
+            i < filtered.length;
+            i++
+        ) {
+
+            if (
+                filtered[i]
+                ===
+                filtered[i + 1]
+            ) {
+
+                const merged =
+                    filtered[i]
+                    * 2;
+
+
+                result.push(
+                    merged
+                );
+
+
+                gained +=
+                    merged;
+
+
+                i++;
+
+            } else {
+
+                result.push(
+                    filtered[i]
+                );
+
+            }
+
+        }
+
+
+        while (
+            result.length < 4
+        ) {
+
+            result.push(
+                0
+            );
+
+        }
+
+
+        return {
+
+            row:
+                result,
+
+            gained:
+                gained
+
+        };
+
+    }
+
+
+    function move(direction) {
+
+        const before =
+            JSON.stringify(
+                grid
+            );
+
+
+        let gained =
+            0;
+
+
+        if (
+            direction === "left"
+            ||
+            direction === "right"
+        ) {
+
+            grid =
+                grid.map(
+                    row => {
+
+                        let current =
+                            [
+                                ...row
+                            ];
+
+
+                        if (
+                            direction
+                            ===
+                            "right"
+                        ) {
+
+                            current.reverse();
+
+                        }
+
+
+                        const result =
+                            slide(
+                                current
+                            );
+
+
+                        gained +=
+                            result.gained;
+
+
+                        if (
+                            direction
+                            ===
+                            "right"
+                        ) {
+
+                            result.row.reverse();
+
+                        }
+
+
+                        return result.row;
+
+                    }
+                );
+
+        }
+
+
+        if (
+            direction === "up"
+            ||
+            direction === "down"
+        ) {
+
+            for (
+                let x = 0;
+                x < 4;
+                x++
+            ) {
+
+                let column = [];
+
+
+                for (
+                    let y = 0;
+                    y < 4;
+                    y++
+                ) {
+
+                    column.push(
+                        grid[y][x]
+                    );
+
+                }
+
+
+                if (
+                    direction
+                    ===
+                    "down"
+                ) {
+
+                    column.reverse();
+
+                }
+
+
+                const result =
+                    slide(
+                        column
+                    );
+
+
+                gained +=
+                    result.gained;
+
+
+                if (
+                    direction
+                    ===
+                    "down"
+                ) {
+
+                    result.row.reverse();
+
+                }
+
+
+                for (
+                    let y = 0;
+                    y < 4;
+                    y++
+                ) {
+
+                    grid[y][x] =
+                        result.row[y];
+
+                }
+
+            }
+
+        }
+
+
+        const after =
+            JSON.stringify(
+                grid
+            );
+
+
+        if (
+            before
+            !==
+            after
+        ) {
+
+            currentScore +=
+                gained;
+
+
+            addRandomTile();
+
+
+            render();
+
+
+            if (
+                !canMove()
+            ) {
+
+                message.textContent =
+                    "GAME OVER";
+
+
+                message.classList.add(
+                    "active"
+                );
+
+            }
+
+        }
+
+    }
+
+
+    function canMove() {
+
+        for (
+            let y = 0;
+            y < 4;
+            y++
+        ) {
+
+            for (
+                let x = 0;
+                x < 4;
+                x++
+            ) {
+
+                if (
+                    grid[y][x]
+                    ===
+                    0
+                ) {
+
+                    return true;
+
+                }
+
+
+                if (
+                    x < 3
+                    &&
+                    grid[y][x]
+                    ===
+                    grid[y][x + 1]
+                ) {
+
+                    return true;
+
+                }
+
+
+                if (
+                    y < 3
+                    &&
+                    grid[y][x]
+                    ===
+                    grid[y + 1][x]
+                ) {
+
+                    return true;
+
+                }
+
+            }
+
+        }
+
+
+        return false;
+
+    }
+
+
+    function handleKeydown(
+        event
+    ) {
+
+        const keys = {
+
+            ArrowLeft:
+                "left",
+
+            ArrowRight:
+                "right",
+
+            ArrowUp:
+                "up",
+
+            ArrowDown:
+                "down"
+
+        };
+
+
+        if (
+            keys[event.key]
+        ) {
+
+            event.preventDefault();
+
+
+            move(
+                keys[event.key]
+            );
+
+        }
+
+    }
+
+
+    board.addEventListener(
+        "keydown",
+        handleKeydown
+    );
+
+
+    board.addEventListener(
+        "click",
+        () => {
+
+            board.focus();
+
+        }
+    );
+
+
+    let touchStartX =
+        0;
+
+    let touchStartY =
+        0;
+
+
+    board.addEventListener(
+        "touchstart",
+        event => {
+
+            const touch =
+                event.touches[0];
+
+
+            touchStartX =
+                touch.clientX;
+
+
+            touchStartY =
+                touch.clientY;
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    board.addEventListener(
+        "touchend",
+        event => {
+
+            const touch =
+                event.changedTouches[0];
+
+
+            const deltaX =
+                touch.clientX
+                -
+                touchStartX;
+
+
+            const deltaY =
+                touch.clientY
+                -
+                touchStartY;
+
+
+            const minSwipe =
+                30;
+
+
+            if (
+                Math.abs(deltaX)
+                <
+                minSwipe
+                &&
+                Math.abs(deltaY)
+                <
+                minSwipe
+            ) {
+
+                return;
+
+            }
+
+
+            if (
+                Math.abs(deltaX)
+                >
+                Math.abs(deltaY)
+            ) {
+
+                if (
+                    deltaX > 0
+                ) {
+
+                    move(
+                        "right"
+                    );
+
+                } else {
+
+                    move(
+                        "left"
+                    );
+
+                }
+
+            } else {
+
+                if (
+                    deltaY > 0
+                ) {
+
+                    move(
+                        "down"
+                    );
+
+                } else {
+
+                    move(
+                        "up"
+                    );
+
+                }
+
+            }
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    restart.addEventListener(
+        "click",
+        startGame
+    );
+
+
+    function closeModal() {
+
+        modal.remove();
+
+    }
+
+
+    close.addEventListener(
+        "click",
+        closeModal
+    );
+
+
+    backdrop.addEventListener(
+        "click",
+        closeModal
+    );
+
+
+    startGame();
+
+}
