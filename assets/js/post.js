@@ -198,6 +198,10 @@ function createBlock(block) {
 
             return createQuestion(block);
 
+        case "terminal-interactive":
+
+            return createInteractiveTerminal(block);
+
         default:
 
             return document.createElement("div");
@@ -1228,5 +1232,252 @@ function createQuestion(block) {
 
 
     return question;
+
+}
+
+function createInteractiveTerminal(block) {
+
+    const terminal =
+        document.createElement("div");
+
+    terminal.className =
+        "post-terminal post-terminal-interactive fade-in";
+
+
+    const header =
+        document.createElement("div");
+
+    header.className =
+        "post-terminal-header";
+
+
+    ["#ff5f57", "#febc2e", "#28c840"].forEach(color => {
+
+        const dot =
+            document.createElement("span");
+
+        dot.style.background =
+            color;
+
+        header.appendChild(dot);
+
+    });
+
+
+    terminal.appendChild(header);
+
+
+    const output =
+        document.createElement("div");
+
+    output.className =
+        "post-terminal-interactive-output";
+
+    terminal.appendChild(output);
+
+
+    const inputLine =
+        document.createElement("div");
+
+    inputLine.className =
+        "post-terminal-interactive-input";
+
+
+    const prompt =
+        document.createElement("span");
+
+    prompt.className =
+        "terminal-interactive-prompt";
+
+    prompt.textContent =
+        block.prompt ?? "$";
+
+
+    const input =
+        document.createElement("input");
+
+    input.type =
+        "text";
+
+    input.autocomplete =
+        "off";
+
+    input.autocapitalize =
+        "off";
+
+    input.spellcheck =
+        false;
+
+
+    inputLine.appendChild(prompt);
+
+    inputLine.appendChild(input);
+
+    terminal.appendChild(inputLine);
+
+
+    const history = [];
+
+    let historyIndex = -1;
+
+
+    function execute(command) {
+
+        const value =
+            command.trim().toLowerCase();
+
+
+        if (!value) return;
+
+
+        history.push(value);
+
+        historyIndex =
+            history.length;
+
+
+        const commandLine =
+            document.createElement("div");
+
+        commandLine.className =
+            "terminal-command";
+
+        commandLine.textContent =
+            `${block.prompt ?? "$"} ${value}`;
+
+        output.appendChild(
+            commandLine
+        );
+
+
+        if (value === "clear") {
+
+            output.innerHTML = "";
+
+            return;
+
+        }
+
+
+        const result =
+            document.createElement("div");
+
+        result.className =
+            "terminal-output";
+
+
+        if (
+            Object.prototype.hasOwnProperty.call(
+                block.commands,
+                value
+            )
+        ) {
+
+            result.textContent =
+                block.commands[value];
+
+        } else {
+
+            result.textContent =
+                `command not found: ${value}`;
+
+        }
+
+
+        output.appendChild(
+            result
+        );
+
+
+        terminal.scrollTop =
+            terminal.scrollHeight;
+
+    }
+
+
+    input.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key === "Enter"
+            ) {
+
+                execute(
+                    input.value
+                );
+
+                input.value = "";
+
+                return;
+
+            }
+
+
+            if (
+                event.key === "ArrowUp"
+            ) {
+
+                if (
+                    history.length === 0
+                ) return;
+
+
+                historyIndex =
+                    Math.max(
+                        0,
+                        historyIndex - 1
+                    );
+
+
+                input.value =
+                    history[
+                        historyIndex
+                    ];
+
+            }
+
+
+            if (
+                event.key === "ArrowDown"
+            ) {
+
+                if (
+                    history.length === 0
+                ) return;
+
+
+                historyIndex =
+                    Math.min(
+                        history.length,
+                        historyIndex + 1
+                    );
+
+
+                input.value =
+                    historyIndex <
+                    history.length
+                        ? history[
+                            historyIndex
+                        ]
+                        : "";
+
+            }
+
+        }
+    );
+
+
+    terminal.addEventListener(
+        "click",
+        () => {
+
+            input.focus();
+
+        }
+    );
+
+
+    return terminal;
 
 }
