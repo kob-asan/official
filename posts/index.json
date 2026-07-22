@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "slug": "welcome",
+        "title": "Kob_asan Official Site を公開しました",
+        "description": "サイト制作の記録と、これからこのサイトで発信していきたいことについて。",
+        "date": "2026-07-16",
+        "category": "TestPage",
+        "published": true
+    },
+
+    {
+        "id": 2,
+        "slug": "tabs-test",
+        "title": "タブが動くかのテストページ",
+        "description": "表題通り。ChatGPTに作らせた。",
+        "date": "2026-07-18",
+        "category": "TestPage",
+        "published": false
+    },
+
+    {
+        "id": 3,
+        "slug": "kimatsu-test",
+        "title": "僕の期末テスト",
+        "description": "僕の期末テストについてなど。",
+        "date": "2026-07-19",
+        "category": "Study",
+        "published": true
+    },
+
+    {
+        "id": 4,
+        "slug": "htmlcssjs1",
+        "title": "HTML・CSS・JS基礎講座①",
+        "description": "基礎講座① HTMLとCSSとJSの基本のキ",
+        "date": "2026-07-21",
+        "category": "Web",
+        "published": true
+    },
+
+    {
+        "id": 5,
+        "slug": "htmlcssjs2",
+        "title": "HTML・CSS・JS基礎講座②",
+        "description": "基礎講座② HTMLとCSSとJSの基本のキ",
+        "date": "2026-07-22",
+        "category": "Web",
+        "published": true
+    }
+
+]

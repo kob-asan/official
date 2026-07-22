@@ -1,0 +1,66 @@
+/* ==========================================================
+   ERROR MAINTENANCE COLOR
+   Kob_asan Official Site
+   ========================================================== */
+
+
+/* ==========================================================
+   Number / Title Color
+========================================================== */
+
+
+.error-code {
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            #8b9cff,
+
+            #c7a6ff
+
+        );
+
+
+    -webkit-background-clip:text;
+
+    background-clip:text;
+
+
+    color:transparent;
+
+    font-size:
+
+        clamp(2rem,7vw,5rem);
+
+    letter-spacing:.08em;
+
+}
+
+
+
+
+/* ==========================================================
+   Card Glow
+========================================================== */
+
+
+.error-card {
+
+    box-shadow:
+
+        0 0 60px rgba(
+
+            150,
+
+            140,
+
+            255,
+
+            .10
+
+        );
+
+}

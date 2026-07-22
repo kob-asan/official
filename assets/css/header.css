@@ -1,0 +1,234 @@
+/* ==========================================================
+   HEADER.CSS
+   Kob_asan Official Site
+   ========================================================== */
+
+.site-header {
+
+    position: fixed;
+    inset: 0 0 auto 0;
+
+    height: var(--header-height);
+
+    z-index: var(--z-header);
+
+    transition:
+        background var(--transition-normal),
+        backdrop-filter var(--transition-normal),
+        box-shadow var(--transition-normal);
+
+}
+
+.site-header.scrolled {
+
+    background: rgba(8, 11, 17, .55);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 12px 40px rgba(0,0,0,.25);
+
+}
+
+.header-inner {
+
+    width: min(100% - (var(--container-padding) * 2), var(--container-width));
+
+    height: 100%;
+
+    margin-inline: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+.site-logo {
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: .15rem;
+
+}
+
+.site-logo-main {
+
+    font-family: var(--font-heading);
+
+    font-size: 2rem;
+
+    line-height: 1;
+
+    letter-spacing: .05em;
+
+    color: var(--color-text);
+
+    transition: color var(--transition-normal);
+
+}
+
+.site-logo-sub {
+
+    font-size: .68rem;
+
+    letter-spacing: .45em;
+
+    color: var(--color-text-muted);
+
+}
+
+.site-logo:hover .site-logo-main{
+
+    color: var(--color-primary);
+
+}
+
+.site-nav{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:2.8rem;
+
+}
+
+.site-nav a{
+
+    position:relative;
+
+    color:var(--color-text-light);
+
+    font-weight:500;
+
+    transition:color var(--transition-normal);
+
+}
+
+.site-nav a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:-8px;
+
+    width:0;
+
+    height:2px;
+
+    border-radius:999px;
+
+    transform:translateX(-50%);
+
+    background:linear-gradient(
+        90deg,
+        var(--color-primary),
+        var(--color-secondary)
+    );
+
+    transition:width var(--transition-normal);
+
+}
+
+.site-nav a:hover,
+.site-nav a.active{
+
+    color:var(--color-text);
+
+}
+
+.site-nav a:hover::after,
+.site-nav a.active::after{
+
+    width:100%;
+
+}
+
+.header-spacer{
+
+    height:var(--header-height);
+
+}
+
+/* ==========================
+   Tablet
+========================== */
+
+@media (max-width:768px){
+
+    .header-inner{
+
+        width:min(100% - 32px, var(--container-width));
+
+    }
+
+    .site-logo-main{
+
+        font-size:1.7rem;
+
+    }
+
+    .site-nav{
+
+        gap:1.5rem;
+
+    }
+
+}
+
+/* ==========================
+   Mobile
+========================== */
+
+@media (max-width:560px){
+
+    .site-header{
+
+        height:64px;
+
+    }
+
+    .header-spacer{
+
+        height:64px;
+
+    }
+
+    .site-logo-main{
+
+        font-size:1.45rem;
+
+    }
+
+    .site-logo-sub{
+
+        font-size:.55rem;
+
+        letter-spacing:.35em;
+
+    }
+
+    .site-nav{
+
+        gap:1rem;
+
+    }
+
+    .site-nav a{
+
+        font-size:.92rem;
+
+    }
+
+}

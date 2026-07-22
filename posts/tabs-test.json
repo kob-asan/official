@@ -1,0 +1,174 @@
+{
+    "published": false,
+    "title": "Web制作 基礎ガイド",
+    "category": "Development",
+    "date": "2026-07-18",
+    "content": [
+
+        {
+            "type": "heading",
+            "level": 2,
+            "text": "Web制作の基本構造"
+        },
+
+        {
+            "type": "paragraph",
+            "text": "WebサイトはHTML、CSS、JavaScript、JSONなど複数の技術によって構成されています。"
+        },
+
+        {
+            "type": "tabs",
+            "tabs": [
+
+                {
+                    "title": "HTML",
+                    "content": [
+
+                        {
+                            "type": "heading",
+                            "level": 3,
+                            "text": "HTMLとは"
+                        },
+
+                        {
+                            "type": "paragraph",
+                            "text": "HTMLはWebページの骨組みを作るマークアップ言語です。"
+                        },
+
+                        {
+                            "type": "code",
+                            "code": "<h1>Hello World</h1>"
+                        },
+
+                        {
+                            "type": "note",
+                            "text": "HTMLは文章や画像などの構造を担当します。"
+                        }
+
+                    ]
+                },
+
+
+                {
+                    "title": "CSS",
+                    "content": [
+
+                        {
+                            "type": "heading",
+                            "level": 3,
+                            "text": "CSSとは"
+                        },
+
+                        {
+                            "type": "paragraph",
+                            "text": "CSSは色、配置、アニメーションなどデザインを担当します。"
+                        },
+
+                        {
+                            "type": "terminal",
+                            "lines": [
+                                "$ style.css",
+                                "body {",
+                                "  background: black;",
+                                "  color: white;",
+                                "}"
+                            ]
+                        }
+
+                    ]
+                },
+
+
+                {
+                    "title": "JavaScript",
+                    "content": [
+
+                        {
+                            "type": "heading",
+                            "level": 3,
+                            "text": "JavaScriptとは"
+                        },
+
+                        {
+                            "type": "paragraph",
+                            "text": "JavaScriptはWebページに動きや機能を追加する言語です。"
+                        },
+
+                        {
+                            "type": "browser",
+                            "title": "Interactive Web App",
+                            "image": "images/sample-browser.png"
+                        }
+
+                    ]
+                },
+
+
+                {
+                    "title": "JSON",
+                    "content": [
+
+                        {
+                            "type": "heading",
+                            "level": 3,
+                            "text": "JSONデータ管理"
+                        },
+
+                        {
+                            "type": "table",
+                            "headers": [
+                                "項目",
+                                "役割"
+                            ],
+                            "rows": [
+                                [
+                                    "title",
+                                    "ページタイトル"
+                                ],
+                                [
+                                    "content",
+                                    "表示ブロック"
+                                ],
+                                [
+                                    "type",
+                                    "ブロック種類"
+                                ]
+                            ]
+                        },
+
+                        {
+                            "type": "timeline",
+                            "items": [
+                                {
+                                    "date": "2026",
+                                    "title": "JSON化",
+                                    "text": "記事データを外部管理"
+                                },
+                                {
+                                    "date": "2026",
+                                    "title": "Block System",
+                                    "text": "自由なページ構築へ進化"
+                                }
+                            ]
+                        }
+
+                    ]
+                }
+
+            ]
+        },
+
+
+        {
+            "type": "divider"
+        },
+
+
+        {
+            "type": "youtube",
+            "id": "dQw4w9WgXcQ",
+            "title": "Web制作紹介動画"
+        }
+
+    ]
+}

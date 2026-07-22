@@ -1,0 +1,214 @@
+/* ==========================================================
+   ANIMATION.CSS
+   Kob_asan Official Site
+   ========================================================== */
+
+/* ==========================================
+   Keyframes
+========================================== */
+
+@keyframes fadeUp {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(32px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+@keyframes fade {
+
+    from {
+
+        opacity: 0;
+
+    }
+
+    to {
+
+        opacity: 1;
+
+    }
+
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+
+        opacity: .18;
+
+    }
+
+    50% {
+
+        opacity: .65;
+
+    }
+
+}
+
+@keyframes floatStar {
+
+    0% {
+
+        transform: translateY(0);
+
+    }
+
+    50% {
+
+        transform: translateY(-8px);
+
+    }
+
+    100% {
+
+        transform: translateY(0);
+
+    }
+
+}
+
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+
+        opacity: .18;
+
+        transform: scale(1);
+
+    }
+
+    50% {
+
+        opacity: .28;
+
+        transform: scale(1.03);
+
+    }
+
+}
+
+/* ==========================================
+   Scroll Animation
+========================================== */
+
+.fade-in {
+
+    opacity: 0;
+
+    transform: translateY(32px);
+
+    transition:
+        opacity .9s ease,
+        transform .9s ease;
+
+}
+
+.fade-in.show {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+/* ==========================================
+   Hero
+========================================== */
+
+.scroll-line{
+
+    animation:
+        scrollLine 2.8s ease-in-out infinite;
+
+}
+
+@keyframes scrollLine {
+
+    0%{
+
+        opacity:.2;
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        opacity:.7;
+
+        transform:translateY(8px);
+
+    }
+
+    100%{
+
+        opacity:.2;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================================
+   Hover
+========================================== */
+
+.hover-lift {
+
+    transition:
+        transform var(--transition-normal),
+        box-shadow var(--transition-normal);
+
+}
+
+.hover-lift:hover {
+
+    transform: translateY(-6px);
+
+}
+
+.hover-scale {
+
+    transition:
+        transform var(--transition-normal);
+
+}
+
+.hover-scale:hover {
+
+    transform: scale(1.03);
+
+}
+
+/* ==========================================
+   Utility
+========================================== */
+
+.fade {
+
+    animation: fade .8s ease forwards;
+
+}
+
+.fade-up {
+
+    animation: fadeUp .8s ease forwards;
+
+}

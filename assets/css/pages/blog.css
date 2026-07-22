@@ -1,0 +1,480 @@
+/* ==========================================================
+   BLOG.CSS
+   Kob_asan Official Site
+   ========================================================== */
+
+
+/* ==========================================================
+   Blog Hero
+========================================================== */
+
+.blog-hero {
+
+    padding-top: 9rem;
+    padding-bottom: 5rem;
+
+}
+
+
+.blog-heading {
+
+    max-width: 760px;
+
+}
+
+
+.blog-heading .section-label {
+
+    margin-bottom: 1.5rem;
+
+}
+
+
+.page-title {
+
+    font-family: "Oswald", sans-serif;
+
+    font-size: clamp(3.2rem, 8vw, 5.5rem);
+
+    font-weight: 500;
+
+    letter-spacing: .04em;
+
+    line-height: 1.1;
+
+}
+
+
+.blog-description {
+
+    margin-top: 2rem;
+
+    max-width: 560px;
+
+    color: var(--color-text-muted);
+
+    line-height: 2;
+
+    font-size: 1rem;
+
+}
+
+
+
+/* ==========================================================
+   Blog Grid
+========================================================== */
+
+.blog-posts {
+
+    padding-bottom: 8rem;
+
+}
+
+
+.blog-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(1, 1fr);
+
+    gap: 1.5rem;
+
+}
+
+
+
+/* ==========================================================
+   Blog Card
+========================================================== */
+
+.blog-card {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 2rem;
+
+    padding: 2rem 2.2rem;
+
+    border-radius: var(--radius-large);
+
+    background:
+
+        rgba(255,255,255,.035);
+
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
+
+
+    text-decoration: none;
+
+    color: inherit;
+
+
+    transition:
+
+        transform .4s ease,
+
+        background .4s ease;
+
+}
+
+
+
+.blog-card:hover {
+
+    transform: translateY(-5px);
+
+    background:
+
+        rgba(255,255,255,.065);
+
+}
+
+
+
+/* ==========================================================
+   Card Content
+========================================================== */
+
+.blog-card-date {
+
+    font-size: .8rem;
+
+    letter-spacing: .12em;
+
+    color: var(--color-text-muted);
+
+    margin-bottom: 1rem;
+
+}
+
+
+
+.blog-card-title {
+
+    font-size: 1.35rem;
+
+    line-height: 1.5;
+
+    margin-bottom: .8rem;
+
+}
+
+
+
+.blog-card-description {
+
+    color: var(--color-text-muted);
+
+    line-height: 1.8;
+
+    font-size: .95rem;
+
+}
+
+
+
+/* ==========================================================
+   Category
+========================================================== */
+
+.category {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: .45rem .9rem;
+
+    border-radius: 999px;
+
+
+    background:
+
+        rgba(0,190,255,.08);
+
+
+    color:
+
+        var(--color-primary);
+
+
+    font-size: .75rem;
+
+    letter-spacing: .12em;
+
+}
+
+
+
+.blog-card-footer {
+
+    display:flex;
+
+    align-items:flex-end;
+
+}
+
+
+
+/* ==========================================================
+   Pagination
+========================================================== */
+
+.pagination {
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:.8rem;
+
+    margin-top:4rem;
+
+}
+
+
+
+.pagination button,
+.pagination a {
+
+
+    min-width:42px;
+
+    height:42px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+
+    border-radius:50%;
+
+
+    background:
+
+        rgba(255,255,255,.035);
+
+
+    color:var(--color-text-light);
+
+
+    text-decoration:none;
+
+
+    transition:.3s ease;
+
+}
+
+
+
+.pagination button:hover,
+.pagination a:hover {
+
+
+    background:
+
+        rgba(0,190,255,.15);
+
+
+}
+
+
+
+/* Active */
+
+.pagination .active {
+
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            var(--color-primary),
+
+            var(--color-secondary)
+
+        );
+
+
+    color:white;
+
+}
+
+
+
+/* ==========================================================
+   Empty State
+========================================================== */
+
+.empty-state {
+
+
+    width:100%;
+
+    padding:4rem 2rem;
+
+    text-align:center;
+
+
+    border-radius:var(--radius-large);
+
+
+    background:
+
+        rgba(255,255,255,.035);
+
+
+    backdrop-filter:blur(18px);
+
+}
+
+
+
+.empty-state-title {
+
+
+    font-size:1.4rem;
+
+    margin-bottom:1rem;
+
+}
+
+
+
+.empty-state-description {
+
+
+    color:var(--color-text-muted);
+
+}
+
+
+
+/* ==========================================================
+   Mobile
+========================================================== */
+
+@media(max-width:768px){
+
+
+    .blog-hero {
+
+        padding-top:7rem;
+
+    }
+
+
+    .blog-card {
+
+        flex-direction:column;
+
+        padding:1.7rem;
+
+    }
+
+
+    .blog-card-footer {
+
+        align-items:flex-start;
+
+    }
+
+
+    .page-title {
+
+        font-size:3rem;
+
+    }
+
+
+}
+
+/* ==========================================
+   Search
+========================================== */
+
+.blog-search{
+
+    position:relative;
+
+    max-width:620px;
+
+    margin:0 auto 4rem;
+
+}
+
+.blog-search input{
+
+    width:100%;
+
+    padding:1rem 1.3rem 1rem 3.4rem;
+
+    border:none;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.05);
+
+    backdrop-filter:blur(16px);
+
+    -webkit-backdrop-filter:blur(16px);
+
+    color:var(--color-text-light);
+
+    font-size:1rem;
+
+    transition:.3s;
+
+}
+
+.blog-search input::placeholder{
+
+    color:var(--color-text-muted);
+
+}
+
+.blog-search input:focus{
+
+    outline:none;
+
+    background:rgba(255,255,255,.08);
+
+    box-shadow:
+
+        0 0 0 1px rgba(59,166,255,.25),
+
+        0 10px 30px rgba(0,0,0,.18);
+
+}
+
+.blog-search-icon{
+
+    position:absolute;
+
+    left:1.2rem;
+
+    top:50%;
+
+    width:20px;
+
+    height:20px;
+
+    transform:translateY(-50%);
+
+    color:var(--color-text-muted);
+
+    pointer-events:none;
+
+}

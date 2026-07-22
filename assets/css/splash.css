@@ -1,0 +1,412 @@
+/* ==========================================================
+   SPLASH
+   Kob_asan Official Site
+========================================================== */
+
+
+#splash {
+
+    position:fixed;
+
+    inset:0;
+
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+
+    background:
+
+    #080b11;
+
+
+    z-index:99999;
+
+
+    overflow:hidden;
+
+
+}
+
+
+
+.splash-inner {
+
+
+    position:relative;
+
+
+    text-align:center;
+
+
+}
+
+
+
+
+
+.splash-inner::before {
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    inset:-300px;
+
+
+    background:
+
+    radial-gradient(
+
+        circle,
+
+        rgba(142,220,255,.18),
+
+        transparent 60%
+
+    );
+
+
+    animation:
+
+    glow 2s ease infinite;
+
+
+}
+
+
+
+
+
+.splash-inner h1 {
+
+
+    position:relative;
+
+
+    margin:0;
+
+
+    font-family:
+
+    "Oswald",
+    sans-serif;
+
+
+    font-size:
+
+    clamp(3rem,10vw,5rem);
+
+
+
+    letter-spacing:.08em;
+
+
+    background:
+
+    linear-gradient(
+
+        135deg,
+
+        #8edcff,
+
+        #7fffd4
+
+    );
+
+
+    -webkit-background-clip:text;
+
+    color:transparent;
+
+
+
+    opacity:0;
+
+
+    transform:translateY(20px);
+
+
+    animation:
+
+    splashTitle .8s ease forwards;
+
+
+
+}
+
+
+
+
+
+.splash-inner p {
+
+
+    position:relative;
+
+
+    margin-top:1rem;
+
+
+    color:
+
+    rgba(255,255,255,.55);
+
+
+    letter-spacing:.35em;
+
+
+    font-size:.8rem;
+
+
+    opacity:0;
+
+
+    animation:
+
+    splashSub .8s ease .25s forwards;
+
+
+
+}
+
+
+
+
+
+/* 波紋 */
+
+.splash-wave {
+
+
+    position:absolute;
+
+
+    left:50%;
+
+    top:50%;
+
+
+
+    width:10px;
+
+    height:10px;
+
+
+
+    transform:
+
+    translate(-50%,-50%);
+
+
+
+    border-radius:50%;
+
+
+    border:
+
+    1px solid rgba(142,220,255,.8);
+
+
+
+    animation:
+
+    wave 1.2s ease .35s forwards;
+
+
+
+}
+
+
+
+
+
+/* 星 */
+
+#splash::before {
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    inset:0;
+
+
+    background-image:
+
+
+    radial-gradient(
+
+        circle,
+
+        rgba(255,255,255,.8) 1px,
+
+        transparent 2px
+
+    );
+
+
+
+    background-size:
+
+    140px 140px;
+
+
+
+    opacity:.25;
+
+
+}
+
+
+
+
+
+
+
+@keyframes splashTitle {
+
+
+to {
+
+
+opacity:1;
+
+transform:translateY(0);
+
+
+}
+
+
+}
+
+
+
+
+
+@keyframes splashSub {
+
+
+to {
+
+
+opacity:1;
+
+
+}
+
+
+}
+
+
+
+
+
+
+
+@keyframes wave {
+
+
+0%{
+
+
+width:10px;
+
+height:10px;
+
+opacity:.8;
+
+
+}
+
+
+
+100%{
+
+
+width:1000px;
+
+height:1000px;
+
+
+opacity:0;
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+@keyframes glow {
+
+
+0%,
+
+100%{
+
+opacity:.6;
+
+}
+
+
+50%{
+
+opacity:1;
+
+}
+
+
+}
+
+
+
+
+
+/* 終了 */
+
+
+#splash.hide {
+
+
+    animation:
+
+    splashRemove .6s ease forwards;
+
+
+}
+
+
+
+@keyframes splashRemove {
+
+
+to {
+
+
+opacity:0;
+
+
+visibility:hidden;
+
+
+}
+
+
+
+}

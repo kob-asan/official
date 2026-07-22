@@ -1,0 +1,143 @@
+/* ==========================================================
+   LAYOUT.CSS
+   Kob_asan Official Site
+   ========================================================== */
+
+.container {
+    width: min(100% - (var(--container-padding) * 2), var(--container-width));
+    margin-inline: auto;
+}
+
+.container-sm {
+    width: min(100% - (var(--container-padding) * 2), 900px);
+    margin-inline: auto;
+}
+
+.container-lg {
+    width: min(100% - (var(--container-padding) * 2), 1400px);
+    margin-inline: auto;
+}
+
+.section {
+    padding: var(--section-space) 0;
+}
+
+.section-sm {
+    padding: calc(var(--section-space) * 0.5) 0;
+}
+
+.section-lg {
+    padding: calc(var(--section-space) * 1.4) 0;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.grid {
+    display: grid;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+}
+
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.stack-xs>*+* {
+    margin-top: 8px;
+}
+
+.stack-sm>*+* {
+    margin-top: 16px;
+}
+
+.stack-md>*+* {
+    margin-top: 24px;
+}
+
+.stack-lg>*+* {
+    margin-top: 40px;
+}
+
+.stack-xl>*+* {
+    margin-top: 64px;
+}
+
+.cluster {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+}
+
+.center {
+    text-align: center;
+}
+
+.full-height {
+    min-height: 100vh;
+}
+
+.spacer {
+    flex: 1;
+}
+
+.hidden {
+    display: none !important;
+}
+
+@media (max-width: 1024px) {
+
+    .grid-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding: 80px 0;
+    }
+
+    .section-lg {
+        padding: 110px 0;
+    }
+
+}

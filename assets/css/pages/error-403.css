@@ -1,0 +1,48 @@
+/* ==========================================================
+   ERROR 403 COLOR
+   Kob_asan Official Site
+   ========================================================== */
+
+
+.error-code {
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            #ffb86b,
+
+            #ff8a5b
+
+        );
+
+
+    -webkit-background-clip:text;
+
+    background-clip:text;
+
+
+    color:transparent;
+
+}
+
+
+.error-card {
+
+    box-shadow:
+
+        0 0 60px rgba(
+
+            255,
+
+            170,
+
+            100,
+
+            .08
+
+        );
+
+}

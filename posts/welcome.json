@@ -1,0 +1,147 @@
+{
+    "published": true,
+    
+    "title": "Kob_asan Official Site を公開しました",
+
+    "date": "2026-07-16",
+
+    "category": "Website",
+
+    "content": [
+
+        {
+            "type": "badges",
+            "items": 
+            [
+                "About This Site"
+            ]
+        },
+
+        {
+            "type": "heading",
+            "level": "2",
+            "text": "このサイトを作ったきっかけ"
+        },
+
+        {
+            "type": "paragraph",
+            "text": "まあ自分のサイトを作ってみたかった、というのが昔からあって、昔はWordPressにブログとか持ってました。でも最近HTMLとかを勉強して、それで自分でサイトを作ってみようと思って。なるべくファイル構成に無駄がないように頑張って作ってみました。"
+        },
+
+        {
+            "type": "note",
+            "title": "ただし注意。",
+            "text": "全部一人で作ったわけではないです。JSに関してはChatGPTと作りました。"
+        },
+
+        {
+            "type": "paragraph",
+            "text": "ただしファイル構成、HTML、CSSに関しては自分で作りました。"
+        },
+
+        {
+            "type": "paragraph",
+            "text": "ということで、ブログのテストページでもあるんであと適当に何個か載せます。"
+        },
+
+        {
+            "type": "divider"
+        },
+
+        {
+            "type": "terminal",
+            "lines": [
+                "$ npm install",
+                "added 32 packages in 2.1s",
+                "",
+                "$ npm run dev",
+                "Server running at http://localhost:5173",
+                "Ready in 164 ms"
+            ]
+        },
+
+        {
+            "type": "keyboard",
+            "keys": [
+                "⌘",
+                "⇧",
+                "P"
+            ]
+        },
+
+        {
+            "type": "quote",
+            "text": "まあこれも野球です。"
+        },
+
+        {
+            "type":"table",
+            "headers":["名前","年齢"],
+            "rows":[
+                ["Kob_asan","15"],
+                ["ChatGPT","??"]
+            ]
+        },
+
+        {
+            "type": "youtube",
+            "id": "G9h5n3EeRIk",
+            "title": "ヘ・タクソ物語パワプロ版第1話"
+        },
+
+        {
+            "type": "alert",
+            "style": "warning",
+            "text": "もちろん僕が出している動画ではありません。"
+        },
+
+        {
+            "type": "button",
+            "text": "githubを見る",
+            "url": "https://github.com"
+        },
+
+        {
+            "type": "link",
+            "title": "Github",
+            "url": "https://github.com/",
+            "description": "Github公式サイト"
+        },
+
+        {
+            "type": "browser",
+            "title": "kob-asan.github.io",
+            "image": "files/image/mono21244477-250114-02.avif"
+        },
+
+        {
+            "type": "details",
+            "summary": "クリックして開く",
+            "content": 
+            [
+                {
+                    "type": "paragraph",
+                    "text": "一応折りたたみ機能もついていますよ。"
+                },
+                {
+                    "type": "note",
+                    "text": "こういうこともできちゃうんです。"
+                }
+            ]
+        },
+
+        {
+            "type": "download",
+            "text": "ZIPファイルをダウンロード",
+            "url": "files/zip/SAMPLE.zip"
+        },
+
+        {
+            "type": "spotify",
+            "url": "https://open.spotify.com/embed/track/1ibeKVCiXORhvUpMmtsQWq"
+        }
+
+        
+        
+    ]
+}

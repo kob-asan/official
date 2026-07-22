@@ -1,0 +1,410 @@
+/* ==========================================
+   Digital Rain
+   Kob_asan Works #001
+========================================== */
+
+
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+
+
+html,
+body{
+
+    width:100%;
+
+    height:100%;
+
+    overflow:hidden;
+
+}
+
+
+
+body{
+
+    font-family:
+
+        "M PLUS 1",
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(60,120,255,.12),
+            transparent 40%
+        ),
+
+        radial-gradient(
+            circle at bottom,
+            rgba(0,255,170,.08),
+            transparent 40%
+        ),
+
+        #050814;
+
+    color:white;
+
+}
+
+
+
+/* ==========================================
+   Layout
+========================================== */
+
+
+.p-rain{
+
+    position:relative;
+
+    width:100%;
+
+    height:100vh;
+
+}
+
+
+
+/* ==========================================
+   Canvas
+========================================== */
+
+
+.p-rain__canvas{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+}
+
+
+
+/* ==========================================
+   Hero
+========================================== */
+
+
+.p-rain__hero{
+
+    position:absolute;
+
+    top:60px;
+
+    left:60px;
+
+    z-index:10;
+
+}
+
+
+
+.p-rain__badge{
+
+    display:inline-block;
+
+    padding:
+
+        .45rem
+        1rem;
+
+    margin-bottom:1rem;
+
+    border-radius:999px;
+
+    border:
+
+        1px solid
+        rgba(80,220,255,.35);
+
+    background:
+
+        rgba(255,255,255,.05);
+
+    backdrop-filter:blur(20px);
+
+    color:
+
+        rgb(120,220,255);
+
+    letter-spacing:.18em;
+
+    font-size:.8rem;
+
+}
+
+
+
+.p-rain__hero h1{
+
+    font-size:
+
+        clamp(
+            3rem,
+            7vw,
+            5rem
+        );
+
+    font-weight:900;
+
+    line-height:1;
+
+}
+
+
+
+.p-rain__hero p{
+
+    margin-top:1rem;
+
+    color:
+
+        rgba(255,255,255,.65);
+
+    font-size:1.1rem;
+
+}
+
+
+
+/* ==========================================
+   Glass Panel
+========================================== */
+
+
+.p-rain__panel{
+
+    position:absolute;
+
+    right:60px;
+
+    bottom:60px;
+
+    display:flex;
+
+    gap:1.5rem;
+
+    z-index:10;
+
+}
+
+
+
+.c-panel{
+
+    width:260px;
+
+    padding:1.5rem;
+
+    border-radius:22px;
+
+    background:
+
+        rgba(255,255,255,.05);
+
+    border:
+
+        1px solid
+        rgba(255,255,255,.12);
+
+    backdrop-filter:
+
+        blur(20px);
+
+}
+
+
+
+.c-panel h2{
+
+    margin-bottom:1rem;
+
+    color:
+
+        rgb(120,220,255);
+
+    font-size:1rem;
+
+}
+
+
+
+.c-panel__list{
+
+    list-style:none;
+
+}
+
+
+
+.c-panel__list li{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:.6rem 0;
+
+    color:
+
+        rgba(255,255,255,.85);
+
+    border-bottom:
+
+        1px solid
+        rgba(255,255,255,.08);
+
+}
+
+
+
+.c-panel__list li:last-child{
+
+    border-bottom:none;
+
+}
+
+
+
+.c-panel__list span{
+
+    color:
+
+        rgb(90,255,190);
+
+}
+
+
+
+/* ==========================================
+   Footer
+========================================== */
+
+
+.p-rain__footer{
+
+    position:absolute;
+
+    left:60px;
+
+    bottom:60px;
+
+    z-index:10;
+
+}
+
+
+
+.c-back{
+
+    display:inline-block;
+
+    padding:
+
+        .8rem
+        1.4rem;
+
+    text-decoration:none;
+
+    color:white;
+
+    border-radius:999px;
+
+    background:
+
+        rgba(255,255,255,.05);
+
+    border:
+
+        1px solid
+        rgba(255,255,255,.12);
+
+    backdrop-filter:
+
+        blur(20px);
+
+    transition:
+
+        .25s;
+
+}
+
+
+
+.c-back:hover{
+
+    transform:
+
+        translateY(-3px);
+
+    border-color:
+
+        rgba(80,220,255,.5);
+
+    box-shadow:
+
+        0 0 25px
+        rgba(80,220,255,.18);
+
+}
+
+
+
+/* ==========================================
+   Responsive
+========================================== */
+
+
+@media(max-width:900px){
+
+    .p-rain__hero{
+
+        top:30px;
+
+        left:30px;
+
+    }
+
+    .p-rain__panel{
+
+        left:30px;
+
+        right:30px;
+
+        bottom:100px;
+
+        flex-direction:column;
+
+    }
+
+    .c-panel{
+
+        width:100%;
+
+    }
+
+    .p-rain__footer{
+
+        left:30px;
+
+        bottom:30px;
+
+    }
+
+}

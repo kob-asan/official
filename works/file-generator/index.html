@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KS File Generator | KOB_ASAN Official</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- =========================
+         Background
+    ========================== -->
+
+    <div class="background">
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+    </div>
+
+    <!-- =========================
+         Main
+    ========================== -->
+
+    <main class="container">
+
+        <!-- Header -->
+
+        <header class="header">
+
+            <div>
+
+                <h1>KS File Generator</h1>
+
+                <p>Create various files instantly.</p>
+
+            </div>
+
+            <div class="version">
+                v1.0
+            </div>
+
+        </header>
+
+        <!-- Card -->
+
+        <section class="card">
+
+            <!-- File Name -->
+
+            <div class="group">
+
+                <label>File Name</label>
+
+                <input
+                    id="fileName"
+                    type="text"
+                    placeholder="example">
+
+            </div>
+
+            <!-- Extension -->
+
+            <div class="group">
+
+                <label>Extension</label>
+
+                <select id="extension">
+
+                    <optgroup label="Text">
+
+                        <option>txt</option>
+                        <option>md</option>
+                        <option>csv</option>
+                        <option>json</option>
+                        <option>xml</option>
+
+                    </optgroup>
+
+                    <optgroup label="Web">
+
+                        <option>html</option>
+                        <option>css</option>
+                        <option selected>js</option>
+
+                    </optgroup>
+
+                    <optgroup label="Office">
+
+                        <option>pdf</option>
+                        <option>doc</option>
+                        <option>docx</option>
+                        <option>xlsx</option>
+                        <option>pptx</option>
+
+                    </optgroup>
+
+                    <optgroup label="Other">
+
+                        <option>zip</option>
+                        <option>bin</option>
+
+                    </optgroup>
+
+                </select>
+
+            </div>
+
+            <!-- Content -->
+
+            <div class="group">
+
+                <label>Content Type</label>
+
+                <select id="contentType">
+
+                    <option value="random">Random</option>
+
+                    <option value="lorem">Lorem Ipsum</option>
+
+                    <option value="number">Numbers</option>
+
+                    <option value="alphabet">Alphabet</option>
+
+                    <option value="hex">Hex</option>
+
+                    <option value="base64">Base64</option>
+
+                    <option value="uuid">UUID</option>
+
+                    <option value="empty">Empty</option>
+
+                </select>
+
+            </div>
+
+            <!-- Size -->
+
+            <div class="group">
+
+                <label>Size</label>
+
+                <select id="size">
+
+                    <option value="1024">1 KB</option>
+
+                    <option value="10240">10 KB</option>
+
+                    <option value="102400">100 KB</option>
+
+                    <option value="1048576">1 MB</option>
+
+                    <option value="10485760">10 MB</option>
+
+                    <option value="52428800">50 MB</option>
+
+                    <option value="104857600">100 MB</option>
+
+                    <option value="536870912">512 MB</option>
+
+                    <option value="1073741824">1 GB</option>
+
+                </select>
+
+            </div>
+
+            <!-- Progress -->
+
+            <div class="progress-area">
+
+                <div class="progress">
+
+                    <div
+                        class="progress-bar"
+                        id="progressBar">
+                    </div>
+
+                </div>
+
+                <div
+                    class="progress-text"
+                    id="progressText">
+
+                    Ready
+
+                </div>
+
+            </div>
+
+            <!-- Buttons -->
+
+            <div class="buttons">
+
+                <button
+                    id="generateBtn"
+                    class="primary">
+
+                    Generate File
+
+                </button>
+
+                <button
+                    id="randomBtn">
+
+                    Random Settings
+
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- Result -->
+
+        <section class="result-card">
+
+            <h2>Information</h2>
+
+            <div class="info-grid">
+
+                <div class="info">
+
+                    <span>Name</span>
+
+                    <strong id="infoName">-</strong>
+
+                </div>
+
+                <div class="info">
+
+                    <span>Extension</span>
+
+                    <strong id="infoExt">-</strong>
+
+                </div>
+
+                <div class="info">
+
+                    <span>Size</span>
+
+                    <strong id="infoSize">-</strong>
+
+                </div>
+
+                <div class="info">
+
+                    <span>Status</span>
+
+                    <strong id="infoStatus">
+
+                        Waiting
+
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- History -->
+
+        <section class="history-card">
+
+            <div class="history-title">
+
+                <h2>History</h2>
+
+                <button id="clearHistory">
+
+                    Clear
+
+                </button>
+
+            </div>
+
+            <div
+                id="historyList"
+                class="history-list">
+
+                <div class="empty">
+
+                    No history.
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

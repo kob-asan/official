@@ -1,0 +1,553 @@
+/* ==========================================================
+   KS File Generator
+   script.js
+   Part 1 / 3
+========================================================== */
+
+"use strict";
+
+/* ========= Elements ========= */
+
+const fileNameInput = document.getElementById("fileName");
+const extensionSelect = document.getElementById("extension");
+const contentTypeSelect = document.getElementById("contentType");
+const sizeSelect = document.getElementById("size");
+
+const generateBtn = document.getElementById("generateBtn");
+const randomBtn = document.getElementById("randomBtn");
+
+const progressBar = document.getElementById("progressBar");
+const progressText = document.getElementById("progressText");
+
+const infoName = document.getElementById("infoName");
+const infoExt = document.getElementById("infoExt");
+const infoSize = document.getElementById("infoSize");
+const infoStatus = document.getElementById("infoStatus");
+
+const historyList = document.getElementById("historyList");
+const clearHistoryBtn = document.getElementById("clearHistory");
+
+/* ========= Constants ========= */
+
+const HISTORY_KEY = "ks-file-generator-history";
+
+const ALPHABET =
+"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+const NUMBERS =
+"0123456789";
+
+const HEX =
+"0123456789ABCDEF";
+
+const RANDOM =
+ALPHABET +
+NUMBERS;
+
+const LOREM =
+`Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam.
+Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+`;
+
+/* ========= Utility ========= */
+
+function randomInt(max){
+
+    return Math.floor(Math.random()*max);
+
+}
+
+function randomChar(chars){
+
+    return chars[randomInt(chars.length)];
+
+}
+
+function formatBytes(bytes){
+
+    const units=[
+        "B",
+        "KB",
+        "MB",
+        "GB"
+    ];
+
+    let value=bytes;
+    let unit=0;
+
+    while(value>=1024 && unit<units.length-1){
+
+        value/=1024;
+        unit++;
+
+    }
+
+    return value.toFixed(2)+" "+units[unit];
+
+}
+
+/* ========= Random Generators ========= */
+
+function generateRandom(length){
+
+    let text="";
+
+    for(let i=0;i<length;i++){
+
+        text+=randomChar(RANDOM);
+
+    }
+
+    return text;
+
+}
+
+function generateAlphabet(length){
+
+    let text="";
+
+    for(let i=0;i<length;i++){
+
+        text+=randomChar(ALPHABET);
+
+    }
+
+    return text;
+
+}
+
+function generateNumbers(length){
+
+    let text="";
+
+    for(let i=0;i<length;i++){
+
+        text+=randomChar(NUMBERS);
+
+    }
+
+    return text;
+
+}
+
+function generateHex(length){
+
+    let text="";
+
+    for(let i=0;i<length;i++){
+
+        text+=randomChar(HEX);
+
+    }
+
+    return text;
+
+}
+
+function generateLorem(length){
+
+    let text="";
+
+    while(text.length<length){
+
+        text+=LOREM;
+
+    }
+
+    return text.substring(0,length);
+
+}
+
+function generateUUID(){
+
+    if(window.crypto &&
+       crypto.randomUUID){
+
+        return crypto.randomUUID();
+
+    }
+
+    let uuid="";
+
+    const chars="abcdef0123456789";
+
+    for(let i=0;i<36;i++){
+
+        if(
+            i===8 ||
+            i===13 ||
+            i===18 ||
+            i===23
+        ){
+
+            uuid+="-";
+            continue;
+
+        }
+
+        uuid+=chars[randomInt(chars.length)];
+
+    }
+
+    return uuid;
+
+}
+
+function generateUUIDList(length){
+
+    let text="";
+
+    while(text.length<length){
+
+        text+=generateUUID()+"\n";
+
+    }
+
+    return text.substring(0,length);
+
+}
+
+function generateBase64(length){
+
+    let output="";
+
+    while(output.length<length){
+
+        output+=btoa(generateRandom(48));
+
+    }
+
+    return output.substring(0,length);
+
+}
+
+function generateEmpty(length){
+
+    return " ".repeat(length);
+
+}
+
+/* ========= Content Builder ========= */
+
+function buildRawContent(type,length){
+
+    switch(type){
+
+        case "random":
+            return generateRandom(length);
+
+        case "alphabet":
+            return generateAlphabet(length);
+
+        case "number":
+            return generateNumbers(length);
+
+        case "hex":
+            return generateHex(length);
+
+        case "lorem":
+            return generateLorem(length);
+
+        case "uuid":
+            return generateUUIDList(length);
+
+        case "base64":
+            return generateBase64(length);
+
+        case "empty":
+            return generateEmpty(length);
+
+        default:
+            return generateRandom(length);
+
+    }
+
+}
+
+/* ==========================================================
+   KS File Generator
+   script.js
+   Part 2 / 3
+========================================================== */
+
+/* ========= Template Builder ========= */
+
+function buildContent(extension, type, size){
+
+    const raw = buildRawContent(type, size);
+
+    switch(extension){
+
+        case "txt":
+            return raw;
+
+        case "md":
+            return `# KS File Generator
+
+Generated by KOB_ASAN Official
+
+---
+
+${raw}
+`;
+
+        case "json":
+
+            return JSON.stringify({
+
+                generator:"KS File Generator",
+
+                created:new Date().toISOString(),
+
+                length:raw.length,
+
+                data:raw
+
+            },null,4);
+
+        case "csv":
+
+            return `id,data
+1,"${raw.replace(/"/g,'""')}"
+`;
+
+        case "xml":
+
+            return `<?xml version="1.0" encoding="UTF-8"?>
+
+<file>
+
+    <generator>KS File Generator</generator>
+
+    <created>${new Date().toISOString()}</created>
+
+    <data>
+
+${raw}
+
+    </data>
+
+</file>`;
+
+        case "html":
+
+            return `<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Generated File</title>
+
+</head>
+
+<body>
+
+<h1>Generated by KS File Generator</h1>
+
+<pre>
+
+${raw}
+
+</pre>
+
+</body>
+
+</html>`;
+
+        case "css":
+
+            return `/* Generated CSS */
+
+body{
+
+    margin:0;
+
+    padding:0;
+
+    font-family:sans-serif;
+
+}
+
+.generated{
+
+    padding:30px;
+
+}
+
+/*
+
+${raw}
+
+*/`;
+
+        case "js":
+
+            return `// Generated JavaScript
+
+"use strict";
+
+const generatedData = \`${raw}\`;
+
+console.log(generatedData);
+`;
+
+        case "bin":
+
+            return raw;
+
+        default:
+
+            return raw;
+
+    }
+
+}
+
+/* ========= Download ========= */
+
+function downloadFile(name, extension, content){
+
+    const blob = new Blob(
+
+        [content],
+
+        {
+
+            type:"application/octet-stream"
+
+        }
+
+    );
+
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+
+    a.href = url;
+
+    a.download = `${name}.${extension}`;
+
+    document.body.appendChild(a);
+
+    a.click();
+
+    a.remove();
+
+    URL.revokeObjectURL(url);
+
+}
+
+/* ========= Progress ========= */
+
+async function animateProgress(){
+
+    progressBar.style.width="0%";
+
+    progressText.textContent="Generating...";
+
+    for(let i=0;i<=100;i++){
+
+        progressBar.style.width=i+"%";
+
+        progressText.textContent=i+"%";
+
+        await new Promise(resolve=>setTimeout(resolve,8));
+
+    }
+
+    progressText.textContent="Completed";
+
+}
+
+/* ========= Info ========= */
+
+function updateInfo(name,extension,size){
+
+    infoName.textContent=name;
+
+    infoExt.textContent=extension;
+
+    infoSize.textContent=formatBytes(size);
+
+    infoStatus.textContent="Completed";
+
+}
+
+/* ========= Generate ========= */
+
+async function generateFile(){
+
+    const fileName =
+
+        fileNameInput.value.trim() ||
+
+        "example";
+
+    const extension =
+
+        extensionSelect.value;
+
+    const contentType =
+
+        contentTypeSelect.value;
+
+    const size =
+
+        Number(sizeSelect.value);
+
+    generateBtn.disabled=true;
+
+    await animateProgress();
+
+    const content =
+
+        buildContent(
+
+            extension,
+
+            contentType,
+
+            size
+
+        );
+
+    downloadFile(
+
+        fileName,
+
+        extension,
+
+        content
+
+    );
+
+    updateInfo(
+
+        fileName,
+
+        extension,
+
+        size
+
+    );
+
+    addHistory(
+
+        fileName,
+
+        extension,
+
+        size
+
+    );
+
+    generateBtn.disabled=false;
+
+}
+
+
+

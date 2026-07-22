@@ -1,0 +1,204 @@
+/* ==========================================================
+   ERROR.CSS
+   Kob_asan Official Site
+   ========================================================== */
+
+
+/* ==========================================================
+   Error Layout
+========================================================== */
+
+.error-page {
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:8rem 1.5rem;
+
+}
+
+
+
+
+/* ==========================================================
+   Error Card
+========================================================== */
+
+
+.error-card {
+
+
+    width:100%;
+
+    max-width:620px;
+
+
+    padding:4rem 3rem;
+
+
+    text-align:center;
+
+
+
+    border-radius:
+
+        var(--radius-large);
+
+
+
+    background:
+
+        rgba(255,255,255,.035);
+
+
+
+    backdrop-filter:
+
+        blur(24px);
+
+
+
+    -webkit-backdrop-filter:
+
+        blur(24px);
+
+
+}
+
+
+
+
+
+/* ==========================================================
+   Number
+========================================================== */
+
+
+.error-code {
+
+
+    margin-bottom:1.5rem;
+
+
+    font-family:
+
+        "Oswald",
+        sans-serif;
+
+
+
+    font-size:
+
+        clamp(6rem,15vw,10rem);
+
+
+
+    line-height:1;
+
+
+
+    letter-spacing:.04em;
+
+
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            var(--color-primary),
+
+            var(--color-secondary)
+
+        );
+
+
+
+    -webkit-background-clip:text;
+
+
+    background-clip:text;
+
+
+    color:transparent;
+
+
+}
+
+
+
+
+
+/* ==========================================================
+   Message
+========================================================== */
+
+
+.error-title {
+
+
+    margin-bottom:1rem;
+
+
+    font-size:1.8rem;
+
+
+}
+
+
+
+.error-message {
+
+
+    margin-bottom:2.5rem;
+
+
+    color:
+
+        var(--color-text-muted);
+
+
+
+    line-height:2;
+
+
+}
+
+
+
+
+
+/* ==========================================================
+   Responsive
+========================================================== */
+
+
+@media(max-width:768px){
+
+
+    .error-card {
+
+
+        padding:3rem 1.5rem;
+
+
+    }
+
+
+
+    .error-title {
+
+
+        font-size:1.4rem;
+
+
+    }
+
+
+}

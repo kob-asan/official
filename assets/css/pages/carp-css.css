@@ -1,0 +1,405 @@
+/* ==========================================================
+   BASEBALL.CSS
+   Kob_asan Official Site
+   Based on WORKS.CSS
+   ========================================================== */
+
+
+/* ==========================================================
+   Baseball Hero
+========================================================== */
+
+.baseball-hero {
+
+    padding-top: 8rem;
+
+    padding-bottom: 3rem;
+
+}
+
+
+.baseball-heading {
+
+    max-width: 760px;
+
+}
+
+
+.baseball-heading .section-label {
+
+    margin-bottom: 1.5rem;
+
+}
+
+
+.baseball-lead {
+
+    margin-top: 1.2rem;
+
+    max-width: 600px;
+
+
+    color: var(--color-text-muted);
+
+    font-size: 1.05rem;
+
+    line-height: 2;
+
+}
+
+
+
+/*
+.page-title は共通なので
+ここでは定義しない
+*/
+
+
+/* ==========================================================
+   Baseball List
+========================================================== */
+
+
+.baseball-list {
+
+    padding-bottom: 8rem;
+
+}
+
+
+
+.baseball-grid {
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:2.5rem;
+
+}
+
+
+
+/* ==========================================================
+   Baseball Card
+========================================================== */
+
+
+.baseball-card {
+
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:3rem;
+
+
+    padding:2.8rem;
+
+
+    border-radius:
+
+        var(--radius-large);
+
+
+
+    background:
+
+        rgba(255,255,255,.035);
+
+
+
+    backdrop-filter:
+
+        blur(20px);
+
+
+
+    -webkit-backdrop-filter:
+
+        blur(20px);
+
+
+
+    text-decoration:none;
+
+    color:inherit;
+
+
+
+    transition:
+
+        transform .45s ease,
+
+        background .45s ease;
+
+
+}
+
+
+
+.baseball-card:hover {
+
+
+    transform:
+
+        translateY(-7px);
+
+
+
+    background:
+
+        rgba(255,255,255,.065);
+
+
+}
+
+
+
+/* ==========================================================
+   Baseball Content
+========================================================== */
+
+
+.baseball-info {
+
+
+    max-width:600px;
+
+
+}
+
+
+
+.baseball-category {
+
+
+    display:inline-flex;
+
+    align-items:center;
+
+
+    margin-bottom:1.2rem;
+
+
+    padding:.45rem .9rem;
+
+
+    border-radius:999px;
+
+
+    background:
+
+        rgba(0,190,255,.08);
+
+
+
+    color:
+
+        var(--color-primary);
+
+
+
+    font-size:.75rem;
+
+
+    letter-spacing:.12em;
+
+
+}
+
+
+
+.baseball-title {
+
+
+    margin-bottom:1rem;
+
+
+    font-size:2rem;
+
+
+    line-height:1.3;
+
+
+    letter-spacing:.02em;
+
+
+}
+
+
+
+.baseball-description {
+
+
+    color:
+
+        var(--color-text-muted);
+
+
+
+    line-height:2;
+
+
+}
+
+
+
+/* ==========================================================
+   Arrow
+========================================================== */
+
+
+.baseball-link {
+
+
+    flex-shrink:0;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    width:52px;
+
+    height:52px;
+
+
+    border-radius:50%;
+
+
+    background:
+
+        rgba(255,255,255,.04);
+
+
+
+    font-size:1.2rem;
+
+
+    transition:.35s ease;
+
+
+}
+
+
+
+.baseball-card:hover .baseball-link {
+
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            var(--color-primary),
+
+            var(--color-secondary)
+
+        );
+
+
+
+    transform:
+
+        translateX(5px);
+
+
+}
+
+
+
+/* ==========================================================
+   Empty
+========================================================== */
+
+
+.baseball-empty {
+
+
+    padding:4rem 2rem;
+
+
+    text-align:center;
+
+
+    border-radius:
+
+        var(--radius-large);
+
+
+
+    background:
+
+        rgba(255,255,255,.035);
+
+
+}
+
+
+
+
+/* ==========================================================
+   Responsive
+========================================================== */
+
+
+@media(max-width:768px){
+
+
+    .baseball-hero {
+
+        padding-top:7rem;
+
+    }
+
+
+
+    .baseball-card {
+
+
+        flex-direction:column;
+
+
+        align-items:flex-start;
+
+
+        padding:2rem;
+
+
+        gap:2rem;
+
+
+    }
+
+
+
+    .baseball-title {
+
+
+        font-size:1.6rem;
+
+
+    }
+
+
+
+    .baseball-link {
+
+
+        width:46px;
+
+        height:46px;
+
+
+    }
+
+
+}

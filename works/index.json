@@ -1,0 +1,29 @@
+[
+    {
+        "id": "matrix-rain",
+        "title": "Matrix Rain",
+        "description": "まあ定番でしょ。作ってみました。",
+        "category": "001",
+        "path": "works/matrix-rain/",
+        "published": true
+    },
+
+    {
+        "id": "password-generator",
+        "title": "Password Generator",
+        "description": "これも定番。",
+        "category": "002",
+        "path": "works/password-generator/",
+        "published": false
+    },
+
+    {
+        "id": "time-table",
+        "title": "Time Table",
+        "description": "Localstorageを活用した時間割。",
+        "category": "003",
+        "path": "works/time-table/",
+        "published": false
+    }
+
+]

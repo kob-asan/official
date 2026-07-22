@@ -1,0 +1,82 @@
+/* ==========================================================
+   FOOTER.CSS
+   Kob_asan Official Site
+   ========================================================== */
+
+.site-footer {
+    position: relative;
+
+    margin-top: var(--section-space);
+
+    border-top: 1px solid var(--color-border);
+
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.footer-inner {
+    width: min(100% - (var(--container-padding) * 2), var(--container-width));
+
+    margin-inline: auto;
+
+    padding: 48px 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 48px;
+}
+
+.footer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-title {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: var(--font-weight-bold);
+
+    letter-spacing: .05em;
+    text-transform: uppercase;
+
+    color: var(--color-text);
+}
+
+.footer-copy {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+}
+
+.footer-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 14px;
+}
+
+.footer-nav a {
+    color: var(--color-text-light);
+
+    transition:
+        color var(--transition-normal),
+        transform var(--transition-fast);
+}
+
+.footer-nav a:hover {
+    color: var(--color-primary);
+    transform: translateX(-4px);
+}
+
+@media (max-width: 768px) {
+
+    .footer-inner {
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .footer-nav {
+        align-items: flex-start;
+    }
+
+}

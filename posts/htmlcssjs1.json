@@ -1,0 +1,232 @@
+{
+  "published": true,
+  "title": "HTML･CSS･JS基礎講座①",
+  "description": "基礎講座① HTMLとCSSとJSの基本のキ",
+  "date": "2026-07-21",
+  "category": "Kob_asanの基礎講座",
+  "content": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "HTML・CSS・JSの役割"
+    },
+    {
+      "type": "paragraph",
+      "text": "Webで何かを作りたい、何かを動かしたい、というときに使う言語はたくさんありますが、その中でももっともよく使われるのがHTML、CSS、JavaScriptの3つです。"
+    },
+    {
+      "type": "paragraph",
+      "text": "この講座では、数回〜数十回にわたって、HTML・CSS・JSの基本を皆さんに知ってほしいのと、あと僕個人の苦手を潰していこう、という意識で、わかりやすい説明を心がけるようにします。"
+    },
+    {
+      "type": "paragraph",
+      "text": "じゃあまず今回は基礎講座①ということで、HTML、CSS、JSの役割についてまず簡単にみて行きましょう。"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "言語",
+        "役割",
+        "例"
+      ],
+      "rows": [
+        [
+          "HTML",
+          "構造を作る",
+          "見出し・文章・画像"
+        ],
+        [
+          "CSS",
+          "デザインを整える",
+          "色・余白・レイアウト"
+        ],
+        [
+          "JavaScript",
+          "動きを付ける",
+          "ボタン・アニメーション"
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "車で例えるとしたら、HTMLが車のボディ、CSSが車の外装、JSがアクセルを踏んだら動く内部機能の充実、と言った感じでしょうか。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "HTMLを書いてみよう"
+    },
+    {
+      "type": "paragraph",
+      "text": "では次に今日は、HTMLをもうちょい詳しくみて行きましょう。"
+    },
+    {
+      "type": "paragraph",
+      "text": "HTMLは基本的にタグというものを使ってやります。"
+    },
+    {
+      "type": "terminal",
+      "lines": [
+        "$ mkdir my-site",
+        "$ cd my-site",
+        "$ touch index.html"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "標準のMac環境であれば、このようなコマンドを入力すれば、my-siteフォルダ内にindex.htmlを作成することができます。同様にCSSとJSも作成できます。(ここでは載せません)"
+    },
+    {
+      "type": "paragraph",
+      "text": "標準のMac環境であれば、テキストエディットなどの『エディター』を利用してHTMLなどの中身を書くことができます。"
+    },
+    {
+      "type": "code",
+      "code": "<!DOCTYPE html>\n<html lang=\"ja\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Hello HTML</title>\n</head>\n<body>\n  <h1>Hello, World!</h1>\n  <p>初めてのHTMLです。</p>\n</body>\n</html>"
+    },
+    {
+      "type": "paragraph",
+      "text": "このような構成でHTMLは書かれます。次に詳しくみて行きましょう。"
+    },
+    {
+      "type": "note",
+      "title": "エディターについて",
+      "text": "他にも、さまざまなエディターがあります。例えば、Cot Editといった機能の簡単なものから、Visual Studio Codeというなんでもできるような使いやすいエディターもあります。(ちなみにKob_asanはVScodeを使っています。)"
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "HTMLファイルの構成"
+    },
+    {
+      "type": "paragraph",
+      "text": "ではここからは、基本のコード・タグなどの意味をちょっぴり解説して行きます。"
+    },
+    {
+      "type": "heading",
+      "level": 6,
+      "text": "<!DOCTYPE html>"
+    },
+    {
+      "type": "paragraph",
+      "text": "ドキュメントタイプ宣言といい、このファイルがHTML5のファイルであることを明示するもの。HTMLにはいくつかバージョンがあり、この書き方は現在主流になっているHTML5というバージョンの書き方ということです。厳密には、ドキュメントタイプ宣言はタグではないことは覚えておこう。"
+    },
+    {
+      "type": "heading",
+      "level": 6,
+      "text": "<html lang=\"ja\">"
+    },
+    {
+      "type": "paragraph",
+      "text": "HTML内で使用する言語が日本語(ja)であることを示すもの。"
+    },
+    {
+      "type": "heading",
+      "level": 6,
+      "text": "<meta charset=\"UTF-8\">"
+    },
+    {
+      "type": "paragraph",
+      "text": "文字コードがUTF-8であることを示す。後述の<head>タグ内に書くこともある。"
+    },
+    {
+      "type": "heading",
+      "level": 6,
+      "text": "<html>〜</html>"
+    },
+    {
+      "type": "paragraph",
+      "text": "HTML文書であるということを指定する範囲を決めるタグ。この間に、次に述べてゆく<head>タグや<body>タグを書いて行きます。"
+    },
+    {
+      "type": "heading",
+      "level": 6,
+      "text": "<head>~</head>"
+    },
+    {
+      "type": "paragraph",
+      "text": "このあいだにページのタイトルや説明文、使用する外部ファイルのリンクなど、ページの情報を記述する欄。この部分はブラウザには表示されないことに注意。"
+    },
+    {
+      "type": "heading",
+      "level": 6,
+      "text": "<title>~</title>"
+    },
+    {
+      "type": "paragraph",
+      "text": "ブラウザに表示されるページのタイトルを記入するところ。"
+    },
+    {
+      "type": "heading",
+      "level": 6,
+      "text": "<body>~</body>"
+    },
+    {
+      "type": "paragraph",
+      "text": "実際にブラウザ上に表示されるコンテンツを書く範囲。"
+    },
+    {
+      "type": "heading",
+      "level": 6,
+      "text": "<h1>~</h1>"
+    },
+    {
+      "type": "paragraph",
+      "text": "見出しを表示させるタグ。"
+    },
+    {
+      "type": "heading",
+      "level": 6,
+      "text": "<p>~</p>"
+    },
+    {
+      "type": "paragraph",
+      "text": "本文を表示させるタグ。"
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "HTMLが表示される流れ"
+    },
+    {
+      "type": "timeline",
+      "items": [
+        {
+          "date": "①",
+          "title": "HTMLを読み込む",
+          "text": "ブラウザがindex.htmlを開きます。"
+        },
+        {
+          "date": "②",
+          "title": "CSSを読み込む",
+          "text": "デザインやレイアウトを適用します。"
+        },
+        {
+          "date": "③",
+          "title": "JavaScriptを実行する",
+          "text": "ボタンやアニメーションなどの動きを追加します。"
+        }
+      ]
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "alert",
+      "style": "success",
+      "text": "Web制作の基本はまずHTMLを言葉のように使いこなせるようになること。皆さんもHTMLからきちっとやってみましょう！"
+    },
+    {
+      "type": "next",
+      "course": "HTML･CSS･JS基礎講座②",
+      "date": "2026年7月21日",
+      "description": "次回は、HTMLを実際にかくやり方を説明して行きます。"
+    }
+  ]
+}

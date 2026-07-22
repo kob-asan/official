@@ -1,0 +1,147 @@
+/* ==========================================================
+   BACKGROUND.CSS
+   Kob_asan Official Site
+   ========================================================== */
+
+.background {
+    position: fixed;
+    inset: 0;
+
+    overflow: hidden;
+    pointer-events: none;
+
+    z-index: var(--z-background);
+}
+
+/* ==========================================
+   Blur
+========================================== */
+
+.background::before,
+.background::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 700px;
+    height: 700px;
+
+    border-radius: 50%;
+
+    filter: blur(140px);
+
+    opacity: .28;
+
+}
+
+.background::before {
+
+    top: -240px;
+    left: -220px;
+
+    background: var(--blur-blue);
+
+}
+
+.background::after {
+
+    right: -260px;
+    bottom: -260px;
+
+    background: var(--blur-green);
+
+}
+
+/* ==========================================
+   Stars
+========================================== */
+
+.stars {
+
+    position: absolute;
+    inset: 0;
+
+}
+
+.stars span {
+
+    position: absolute;
+
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: var(--star-color);
+
+    opacity: .35;
+
+    box-shadow:
+
+        0 0 20px var(--star-color);
+
+    animation:
+        twinkle 4.5s ease-in-out infinite,
+        floatStar 28s ease-in-out infinite;
+
+}
+
+/* ---------- Star Positions ---------- */
+
+.stars span:nth-child(1){
+    top:10%;
+    left:5%;
+}
+
+.stars span:nth-child(2){
+    top:18%;
+    left:94%;
+}
+
+.stars span:nth-child(3){
+    top:36%;
+    left:8%;
+}
+
+.stars span:nth-child(4){
+    top:46%;
+    left:90%;
+}
+
+.stars span:nth-child(5){
+    top:64%;
+    left:4%;
+}
+
+.stars span:nth-child(6){
+    top:76%;
+    left:95%;
+}
+
+.stars span:nth-child(7){
+    top:88%;
+    left:12%;
+}
+/* ---------- Variation ---------- */
+
+.stars span:nth-child(odd){
+
+    animation-duration: 8s, 20s;
+
+}
+
+.stars span:nth-child(even){
+
+    animation-duration: 6s, 16s;
+
+}
+
+.stars span:nth-child(3n){
+
+    width: 7px;
+    height: 7px;
+
+    opacity: .65;
+
+}

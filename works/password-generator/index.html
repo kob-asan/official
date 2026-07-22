@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+    <!-- ==========================================
+         Basic
+    ========================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Kob_asan Official Site</title>
+
+    <meta name="description"
+          content="Kob_asan Official Site">
+
+    <meta name="theme-color"
+          content="#080b11">
+
+    <link rel="icon" href="../../assets/favicon/favicon.jpg">
+
+    <!-- ==========================================
+         Fonts
+    ========================================== -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1:wght@300;400;500;700&family=Oswald:wght@400;500;700&display=swap"
+          rel="stylesheet">
+
+    <!-- ==========================================
+         CSS
+    ========================================== -->
+
+    <link rel="stylesheet" href="../../assets/css/reset.css">
+
+    <link rel="stylesheet" href="../../assets/css/variables.css">
+
+    <link rel="stylesheet" href="../../assets/css/common.css">
+
+    <link rel="stylesheet" href="../../assets/css/layout.css">
+
+    <link rel="stylesheet" href="../../assets/css/header.css">
+
+    <link rel="stylesheet" href="../../assets/css/footer.css">
+
+    <link rel="stylesheet" href="../../assets/css/background.css">
+
+    <link rel="stylesheet" href="../../assets/css/animation.css">
+
+    <link rel="stylesheet" href="../../assets/css/components.css">
+
+    <link rel="stylesheet" href="../../assets/css/pages/home.css">
+
+    <link rel="stylesheet" href="../../assets/css/splash.css">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- ==========================================
+         Background
+    ========================================== -->
+
+    <div class="background">
+
+        <div class="stars"></div>
+
+    </div>
+
+    <!-- ==========================================
+         Header
+    ========================================== -->
+
+    <header class="site-header">
+
+        <div class="header-inner">
+
+            <a href="../../index.html" class="site-logo">
+
+                <span class="site-logo-main">
+                    Kob_asan
+                </span>
+
+                <span class="site-logo-sub">
+                    OFFICIAL SITE
+                </span>
+
+            </a>
+
+            <nav class="site-nav">
+
+                <a href="../../index.html">
+                    Home
+                </a>
+
+                <a href="../../blog.html">
+                    Blog
+                </a>
+
+                <a href="../../about.html">
+                    About
+                </a>
+
+                <a href="../../works.html">
+                    Works
+                </a> 
+
+            </nav>
+
+        </div>
+
+    </header>
+
+    <main class="container">
+
+        <div class="glass-card">
+
+            <h1>Password Generator</h1>
+
+            <p class="description">
+                パスワード生成機でございます。
+            </p>
+
+            <div class="password-output">
+
+                <input id="password"
+                       type="text"
+                       readonly>
+
+                <button id="copyButton">
+                    Copy
+                </button>
+
+            </div>
+
+            <div class="setting">
+
+                <label>
+                    Length
+                    <span id="lengthValue">16</span>
+                </label>
+
+                <input id="length"
+                       type="range"
+                       min="8"
+                       max="64"
+                       value="16">
+
+            </div>
+
+            <div class="options">
+
+                <label>
+                    <input type="checkbox"
+                           id="upper"
+                           checked>
+                    大文字
+                </label>
+
+                <label>
+                    <input type="checkbox"
+                           id="lower"
+                           checked>
+                    小文字
+                </label>
+
+                <label>
+                    <input type="checkbox"
+                           id="number"
+                           checked>
+                    数字
+                </label>
+
+                <label>
+                    <input type="checkbox"
+                           id="symbol"
+                           checked>
+                    記号
+                </label>
+
+            </div>
+
+            <div class="strength">
+
+                <div class="strength-bar">
+
+                    <div id="strengthFill"></div>
+
+                </div>
+
+                <p id="strengthText">
+                    Strong
+                </p>
+
+            </div>
+
+            <button id="generate">
+                Generate Password
+            </button>
+
+        </div>
+
+    </main>
+
+    <footer class="site-footer">
+
+        <div class="footer-inner">
+
+            <div class="footer-info">
+
+                <h2 class="footer-title">
+                    Kob_asan Official Site
+                </h2>
+
+                <p class="footer-copy">
+                    © <span id="copyright-year"></span> Kob_asan.
+                </p>
+
+            </div>
+
+            <nav class="footer-nav">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="blog.html">
+                    Blog
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="works.html">
+                    Works
+                </a> 
+
+            </nav>
+
+        </div>
+
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

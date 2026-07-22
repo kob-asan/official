@@ -1,0 +1,166 @@
+/* ==========================================================
+   COMMON.CSS
+   Kob_asan Official Site
+   ========================================================== */
+
+html {
+    overflow-x: hidden;
+}
+
+body {
+    background: var(--color-bg);
+    color: var(--color-text);
+
+    font-family:
+        var(--font-body),
+        "M PLUS 1",
+        sans-serif;
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-body);
+
+    overflow-x: hidden;
+    position: relative;
+
+    min-height: 100vh;
+}
+
+::selection {
+    background: rgba(59, 166, 255, .28);
+    color: var(--color-text);
+}
+
+main {
+    position: relative;
+    z-index: var(--z-base);
+}
+
+section {
+    padding: var(--section-space) 0;
+}
+
+a {
+    transition:
+        color var(--transition-normal),
+        opacity var(--transition-normal);
+}
+
+a:hover {
+    color: var(--color-primary);
+}
+
+button {
+    transition:
+        background var(--transition-normal),
+        color var(--transition-normal),
+        transform var(--transition-fast),
+        opacity var(--transition-fast);
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--color-text);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-bold);
+}
+
+h1,
+h2 {
+    font-family:
+        var(--font-heading),
+        var(--font-body),
+        "M PLUS 1",
+        sans-serif;
+
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-body);
+}
+
+p {
+    color: var(--color-text-light);
+}
+
+strong {
+    color: var(--color-text);
+    font-weight: var(--font-weight-bold);
+}
+
+small {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+}
+
+code,
+pre {
+    font-family:
+        "SFMono-Regular",
+        Consolas,
+        "Liberation Mono",
+        Menlo,
+        monospace;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+}
+
+textarea {
+    resize: vertical;
+}
+
+iframe {
+    border: 0;
+    display: block;
+}
+
+hr {
+    height: 1px;
+    background: var(--color-border);
+}
+
+::-webkit-scrollbar {
+    width: 3px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+        180deg,
+        var(--color-primary),
+        var(--color-secondary)
+    );
+    border-radius: var(--radius-round);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    filter: brightness(1.15);
+}
+
+::placeholder {
+    color: var(--color-text-muted);
+    opacity: 1;
+}

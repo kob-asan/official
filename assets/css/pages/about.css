@@ -1,0 +1,318 @@
+/* ==========================================================
+   ABOUT.CSS
+   Kob_asan Official Site
+   ========================================================== */
+
+
+/* ==========================================================
+   About Hero
+========================================================== */
+
+.about-hero {
+
+    padding-top: 9rem;
+
+    padding-bottom: 5rem;
+
+}
+
+
+.about-heading {
+
+    max-width: 760px;
+
+}
+
+
+.about-heading .section-label {
+
+    margin-bottom: 1.5rem;
+
+}
+
+
+
+.about-lead {
+
+    margin-top: 1.2rem;
+
+    max-width: 600px;
+
+
+    color: var(--color-text-muted);
+
+
+    font-size: 1.05rem;
+
+    line-height: 2;
+
+
+}
+
+.page-title {
+
+    font-family: "Oswald", sans-serif;
+
+    font-size: clamp(3.2rem, 8vw, 5.5rem);
+
+    font-weight: 500;
+
+    letter-spacing: .04em;
+
+    line-height: 1.1;
+
+}
+
+
+
+/* ==========================================================
+   About Content
+========================================================== */
+
+.about-content {
+
+    padding-bottom: 5rem;
+
+}
+
+
+
+.about-grid {
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:2rem;
+
+}
+
+
+
+/* ==========================================================
+   About Card
+========================================================== */
+
+
+.about-card {
+
+
+    padding:2.5rem;
+
+
+    border-radius:
+
+        var(--radius-large);
+
+
+
+    background:
+
+        rgba(255,255,255,.035);
+
+
+
+    backdrop-filter:
+
+        blur(20px);
+
+
+
+    -webkit-backdrop-filter:
+
+        blur(20px);
+
+
+
+    transition:
+
+        transform .4s ease,
+
+        background .4s ease;
+
+
+}
+
+
+
+.about-card:hover {
+
+
+    transform:
+
+        translateY(-6px);
+
+
+
+    background:
+
+        rgba(255,255,255,.065);
+
+
+}
+
+
+
+
+.about-card h2 {
+
+
+    margin-bottom:1.5rem;
+
+
+    font-size:1.5rem;
+
+
+    letter-spacing:.03em;
+
+
+}
+
+
+
+.about-card h2::after {
+
+
+    content:"";
+
+
+    display:block;
+
+
+    width:35px;
+
+
+    height:2px;
+
+
+    margin-top:1rem;
+
+
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            var(--color-primary),
+
+            var(--color-secondary)
+
+        );
+
+
+}
+
+
+
+.about-card p {
+
+
+    color:
+
+        var(--color-text-muted);
+
+
+
+    line-height:
+
+        2;
+
+
+}
+
+
+
+/* ==========================================================
+   About Detail Section
+========================================================== */
+
+
+.about-detail {
+
+
+    max-width:760px;
+
+
+    margin-inline:auto;
+
+
+}
+
+
+
+.about-detail p {
+
+
+    color:
+
+        var(--color-text-light);
+
+
+
+    line-height:
+
+        2.1;
+
+
+}
+
+
+
+/* ==========================================================
+   Responsive
+========================================================== */
+
+
+@media(max-width:900px){
+
+
+    .about-grid {
+
+
+        grid-template-columns:
+
+            1fr;
+
+
+    }
+
+
+}
+
+
+
+@media(max-width:768px){
+
+
+    .about-hero {
+
+
+        padding-top:7rem;
+
+
+    }
+
+
+
+    .about-lead {
+
+
+        font-size:.95rem;
+
+
+    }
+
+
+
+    .about-card {
+
+
+        padding:2rem;
+
+
+    }
+
+
+}

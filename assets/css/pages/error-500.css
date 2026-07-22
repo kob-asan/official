@@ -1,0 +1,48 @@
+/* ==========================================================
+   ERROR 500 COLOR
+   Kob_asan Official Site
+   ========================================================== */
+
+
+.error-code {
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            #ff8fa3,
+
+            #c77dff
+
+        );
+
+
+    -webkit-background-clip:text;
+
+    background-clip:text;
+
+
+    color:transparent;
+
+}
+
+
+.error-card {
+
+    box-shadow:
+
+        0 0 60px rgba(
+
+            199,
+
+            125,
+
+            255,
+
+            .08
+
+        );
+
+}

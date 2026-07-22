@@ -1,0 +1,112 @@
+/* ==========================================================
+   VARIABLES.CSS
+   Kob_asan Official Site
+   ========================================================== */
+
+:root {
+
+    /* ==========================================
+       Colors
+    ========================================== */
+
+    --color-bg: #080b11;
+    --color-bg-secondary: #0f1520;
+    --color-surface: #141b24;
+    --color-surface-hover: #1a2431;
+
+    --color-primary: #3ba6ff;
+    --color-secondary: #36d980;
+
+    --color-text: #f5f7fb;
+    --color-text-light: #cfd8e3;
+    --color-text-muted: #94a3b8;
+
+    --color-border: rgba(255, 255, 255, 0.08);
+
+    --color-shadow: rgba(0, 0, 0, 0.35);
+
+    --color-success: #36d980;
+    --color-warning: #ffcc66;
+    --color-danger: #ff6b6b;
+    --color-info: #3ba6ff;
+
+    /* ==========================================
+       Background Effects
+    ========================================== */
+
+    --blur-blue: rgba(59, 166, 255, 0.18);
+    --blur-green: rgba(54, 217, 128, 0.16);
+
+    --star-color: rgba(255, 255, 255, 0.85);
+
+    /* ==========================================
+       Typography
+    ========================================== */
+
+    --font-body: "M PLUS 1", sans-serif;
+    --font-heading: "Oswald", "M PLUS 1", sans-serif;
+
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.5rem;
+    --font-size-2xl: 2rem;
+    --font-size-3xl: 3rem;
+    --font-size-4xl: 4.5rem;
+
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+
+    --line-height-body: 1.9;
+    --line-height-heading: 1.2;
+
+    /* ==========================================
+       Layout
+    ========================================== */
+
+    --container-width: 1200px;
+    --container-padding: 24px;
+
+    --header-height: 72px;
+
+    --section-space: 120px;
+
+    /* ==========================================
+       Radius
+    ========================================== */
+
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-xl: 28px;
+    --radius-round: 9999px;
+
+    /* ==========================================
+       Shadow
+    ========================================== */
+
+    --shadow-sm: 0 4px 12px var(--color-shadow);
+    --shadow-md: 0 10px 30px var(--color-shadow);
+    --shadow-lg: 0 20px 60px var(--color-shadow);
+
+    /* ==========================================
+       Transition
+    ========================================== */
+
+    --transition-fast: .2s ease;
+    --transition-normal: .35s ease;
+    --transition-slow: .6s ease;
+
+    /* ==========================================
+       Layer
+    ========================================== */
+
+    --z-background: -10;
+    --z-base: 1;
+    --z-header: 1000;
+    --z-overlay: 2000;
+    --z-modal: 3000;
+
+}
