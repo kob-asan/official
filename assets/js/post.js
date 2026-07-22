@@ -1371,9 +1371,15 @@ function createInteractiveTerminal(block) {
             createWeatherModal();
             
             return;
-        
         }
-
+       
+        if (value === "timer") {
+           
+            createTimerModal();
+           
+            return;
+           
+        }
 
         const result =
             document.createElement("div");
@@ -2035,5 +2041,666 @@ async function createWeatherModal() {
 
         }
     );
+
+}
+
+
+function createTimerModal() {
+
+    const existing =
+        document.querySelector(
+            ".post-timer-modal"
+        );
+
+    if (existing) {
+
+        existing.remove();
+
+        return;
+
+    }
+
+
+    const modal =
+        document.createElement("div");
+
+    modal.className =
+        "post-timer-modal";
+
+
+    const backdrop =
+        document.createElement("div");
+
+    backdrop.className =
+        "post-timer-backdrop";
+
+
+    const card =
+        document.createElement("div");
+
+    card.className =
+        "post-timer-card";
+
+
+    const close =
+        document.createElement("button");
+
+    close.className =
+        "post-timer-close";
+
+    close.type =
+        "button";
+
+    close.textContent =
+        "×";
+
+
+    const label =
+        document.createElement("div");
+
+    label.className =
+        "post-timer-label";
+
+    label.textContent =
+        "TIMER";
+
+
+    const display =
+        document.createElement("div");
+
+    display.className =
+        "post-timer-display";
+
+
+    const minutes =
+        document.createElement("input");
+
+    minutes.type =
+        "number";
+
+    minutes.min =
+        "0";
+
+    minutes.max =
+        "999";
+
+    minutes.value =
+        "00";
+
+    minutes.inputMode =
+        "numeric";
+
+    minutes.setAttribute(
+        "aria-label",
+        "Minutes"
+    );
+
+
+    const colon =
+        document.createElement("span");
+
+    colon.className =
+        "post-timer-colon";
+
+    colon.textContent =
+        ":";
+
+
+    const seconds =
+        document.createElement("input");
+
+    seconds.type =
+        "number";
+
+    seconds.min =
+        "0";
+
+    seconds.max =
+        "59";
+
+    seconds.value =
+        "00";
+
+    seconds.inputMode =
+        "numeric";
+
+    seconds.setAttribute(
+        "aria-label",
+        "Seconds"
+    );
+
+
+    display.appendChild(
+        minutes
+    );
+
+    display.appendChild(
+        colon
+    );
+
+    display.appendChild(
+        seconds
+    );
+
+
+    const controls =
+        document.createElement("div");
+
+    controls.className =
+        "post-timer-controls";
+
+
+    const start =
+        document.createElement("button");
+
+    start.type =
+        "button";
+
+    start.className =
+        "post-timer-start";
+
+    start.textContent =
+        "START";
+
+
+    const pause =
+        document.createElement("button");
+
+    pause.type =
+        "button";
+
+    pause.className =
+        "post-timer-pause";
+
+    pause.textContent =
+        "PAUSE";
+
+
+    const reset =
+        document.createElement("button");
+
+    reset.type =
+        "button";
+
+    reset.className =
+        "post-timer-reset";
+
+    reset.textContent =
+        "RESET";
+
+
+    controls.appendChild(
+        start
+    );
+
+    controls.appendChild(
+        pause
+    );
+
+    controls.appendChild(
+        reset
+    );
+
+
+    const status =
+        document.createElement("div");
+
+    status.className =
+        "post-timer-status";
+
+
+    card.appendChild(
+        close
+    );
+
+    card.appendChild(
+        label
+    );
+
+    card.appendChild(
+        display
+    );
+
+    card.appendChild(
+        controls
+    );
+
+    card.appendChild(
+        status
+    );
+
+
+    modal.appendChild(
+        backdrop
+    );
+
+    modal.appendChild(
+        card
+    );
+
+
+    document.body.appendChild(
+        modal
+    );
+
+
+    let remaining =
+        0;
+
+    let interval =
+        null;
+
+    let running =
+        false;
+
+
+    function getInputTime() {
+
+        const min =
+            Math.max(
+                0,
+                parseInt(
+                    minutes.value,
+                    10
+                ) || 0
+            );
+
+
+        const sec =
+            Math.min(
+                59,
+                Math.max(
+                    0,
+                    parseInt(
+                        seconds.value,
+                        10
+                    ) || 0
+                )
+            );
+
+
+        return (
+            min * 60
+            + sec
+        );
+
+    }
+
+
+    function updateDisplay() {
+
+        const min =
+            Math.floor(
+                remaining / 60
+            );
+
+        const sec =
+            remaining % 60;
+
+
+        minutes.value =
+            String(min)
+                .padStart(
+                    2,
+                    "0"
+                );
+
+
+        seconds.value =
+            String(sec)
+                .padStart(
+                    2,
+                    "0"
+                );
+
+    }
+
+
+    function normalizeInput(
+        input,
+        max
+    ) {
+
+        let value =
+            parseInt(
+                input.value,
+                10
+            );
+
+
+        if (
+            Number.isNaN(value)
+        ) {
+
+            value = 0;
+
+        }
+
+
+        value =
+            Math.max(
+                0,
+                value
+            );
+
+
+        if (
+            max !== null
+        ) {
+
+            value =
+                Math.min(
+                    max,
+                    value
+                );
+
+        }
+
+
+        input.value =
+            String(value)
+                .padStart(
+                    2,
+                    "0"
+                );
+
+    }
+
+
+    function startTimer() {
+
+        if (running) return;
+
+
+        if (
+            remaining <= 0
+        ) {
+
+            remaining =
+                getInputTime();
+
+        }
+
+
+        if (
+            remaining <= 0
+        ) {
+
+            status.textContent =
+                "SET TIME";
+
+            minutes.focus();
+
+            return;
+
+        }
+
+
+        running =
+            true;
+
+
+        status.textContent =
+            "RUNNING";
+
+
+        minutes.disabled =
+            true;
+
+        seconds.disabled =
+            true;
+
+
+        interval =
+            setInterval(
+                () => {
+
+                    remaining--;
+
+                    updateDisplay();
+
+
+                    if (
+                        remaining <= 0
+                    ) {
+
+                        clearInterval(
+                            interval
+                        );
+
+                        interval =
+                            null;
+
+                        running =
+                            false;
+
+
+                        minutes.disabled =
+                            false;
+
+                        seconds.disabled =
+                            false;
+
+
+                        status.textContent =
+                            "TIME'S UP";
+
+                    }
+
+                },
+                1000
+            );
+
+    }
+
+
+    function pauseTimer() {
+
+        if (!running) return;
+
+
+        clearInterval(
+            interval
+        );
+
+        interval =
+            null;
+
+        running =
+            false;
+
+
+        minutes.disabled =
+            false;
+
+        seconds.disabled =
+            false;
+
+
+        status.textContent =
+            "PAUSED";
+
+    }
+
+
+    function resetTimer() {
+
+        clearInterval(
+            interval
+        );
+
+        interval =
+            null;
+
+        running =
+            false;
+
+        remaining =
+            0;
+
+
+        minutes.disabled =
+            false;
+
+        seconds.disabled =
+            false;
+
+
+        minutes.value =
+            "00";
+
+        seconds.value =
+            "00";
+
+
+        status.textContent =
+            "";
+
+    }
+
+
+    start.addEventListener(
+        "click",
+        startTimer
+    );
+
+
+    pause.addEventListener(
+        "click",
+        pauseTimer
+    );
+
+
+    reset.addEventListener(
+        "click",
+        resetTimer
+    );
+
+
+    minutes.addEventListener(
+        "change",
+        () => {
+
+            if (!running) {
+
+                normalizeInput(
+                    minutes,
+                    null
+                );
+
+                remaining =
+                    getInputTime();
+
+            }
+
+        }
+    );
+
+
+    seconds.addEventListener(
+        "change",
+        () => {
+
+            if (!running) {
+
+                normalizeInput(
+                    seconds,
+                    59
+                );
+
+                remaining =
+                    getInputTime();
+
+            }
+
+        }
+    );
+
+
+    minutes.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key === "Enter"
+            ) {
+
+                startTimer();
+
+            }
+
+        }
+    );
+
+
+    seconds.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key === "Enter"
+            ) {
+
+                startTimer();
+
+            }
+
+        }
+    );
+
+
+    function closeModal() {
+
+        clearInterval(
+            interval
+        );
+
+        interval =
+            null;
+
+        modal.remove();
+
+    }
+
+
+    close.addEventListener(
+        "click",
+        closeModal
+    );
+
+
+    backdrop.addEventListener(
+        "click",
+        closeModal
+    );
+
+
+    function handleKeydown(
+        event
+    ) {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            closeModal();
+
+            document.removeEventListener(
+                "keydown",
+                handleKeydown
+            );
+
+        }
+
+    }
+
+
+    document.addEventListener(
+        "keydown",
+        handleKeydown
+    );
+
+
+    minutes.focus();
 
 }
