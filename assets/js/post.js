@@ -1381,6 +1381,14 @@ function createInteractiveTerminal(block) {
            
         }
 
+        if (value === "matrix") {
+           
+            createMatrixEffect();
+           
+            return;
+        
+        }
+
         const result =
             document.createElement("div");
 
@@ -2702,5 +2710,190 @@ function createTimerModal() {
 
 
     minutes.focus();
+
+}
+
+
+function createMatrixEffect() {
+
+    const existing =
+        document.querySelector(
+            ".post-matrix-effect"
+        );
+
+    if (existing) {
+
+        existing.remove();
+
+        return;
+
+    }
+
+
+    const canvas =
+        document.createElement("canvas");
+
+    canvas.className =
+        "post-matrix-effect";
+
+
+    document.body.appendChild(
+        canvas
+    );
+
+
+    const ctx =
+        canvas.getContext("2d");
+
+
+    let width =
+        canvas.width =
+        window.innerWidth;
+
+    let height =
+        canvas.height =
+        window.innerHeight;
+
+
+    const fontSize = 16;
+
+    const columns =
+        Math.floor(
+            width / fontSize
+        );
+
+
+    const drops =
+        Array(columns)
+            .fill(1);
+
+
+    const characters =
+        "アカサタナハマヤラワ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+
+    function resize() {
+
+        width =
+            canvas.width =
+            window.innerWidth;
+
+        height =
+            canvas.height =
+            window.innerHeight;
+
+    }
+
+
+    window.addEventListener(
+        "resize",
+        resize
+    );
+
+
+    function draw() {
+
+        ctx.fillStyle =
+            "rgba(0, 0, 0, 0.08)";
+
+        ctx.fillRect(
+            0,
+            0,
+            width,
+            height
+        );
+
+
+        ctx.fillStyle =
+            "#8AFF5C";
+
+        ctx.font =
+            `${fontSize}px "JetBrains Mono", monospace`;
+
+
+        for (
+            let i = 0;
+            i < drops.length;
+            i++
+        ) {
+
+            const char =
+                characters[
+                    Math.floor(
+                        Math.random()
+                        * characters.length
+                    )
+                ];
+
+
+            const x =
+                i * fontSize;
+
+            const y =
+                drops[i]
+                * fontSize;
+
+
+            ctx.fillText(
+                char,
+                x,
+                y
+            );
+
+
+            if (
+                y > height
+                &&
+                Math.random() > 0.975
+            ) {
+
+                drops[i] = 0;
+
+            }
+
+
+            drops[i]++;
+
+        }
+
+    }
+
+
+    const animation =
+        setInterval(
+            draw,
+            45
+        );
+
+
+    setTimeout(
+        () => {
+
+            canvas.classList.add(
+                "post-matrix-fade"
+            );
+
+
+            setTimeout(
+                () => {
+
+                    clearInterval(
+                        animation
+                    );
+
+                    window.removeEventListener(
+                        "resize",
+                        resize
+                    );
+
+                    canvas.remove();
+
+                },
+                1000
+            );
+
+        },
+        6000
+    );
 
 }
