@@ -3823,7 +3823,8 @@ function createCoffeeModal() {
 
     const frames = [
 
-`   ( (
+    )   
+`  ( (
     ) )
  ........
  |      |]
