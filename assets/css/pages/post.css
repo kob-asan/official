@@ -3266,3 +3266,211 @@
     }
 
 }
+
+.post-coffee-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+.post-coffee-backdrop {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(0,0,0,.68);
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+}
+
+.post-coffee-card {
+
+    position: relative;
+
+    z-index: 1;
+
+    width:
+        min(
+            520px,
+            calc(100% - 2rem)
+        );
+
+    padding:
+        3.5rem
+        3rem;
+
+    background:
+        rgba(15,15,15,.94);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,.5);
+
+    text-align: center;
+
+    animation:
+        postCoffeeModalIn
+        .35s
+        ease
+        both;
+
+}
+
+.post-coffee-close {
+
+    position: absolute;
+
+    top: 1rem;
+
+    right: 1rem;
+
+    width: 2.2rem;
+
+    height: 2.2rem;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color:
+        var(--color-text-muted);
+
+    font-size: 1.6rem;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        color .2s ease;
+
+}
+
+.post-coffee-close:hover {
+
+    color:
+        var(--color-text);
+
+}
+
+.post-coffee-label {
+
+    color:
+        var(--color-primary);
+
+    font-size: .72rem;
+
+    font-weight: 700;
+
+    letter-spacing: .25em;
+
+}
+
+.post-coffee-ascii {
+
+    margin-top: 2rem;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 1rem;
+
+    line-height: 1.25;
+
+    white-space: pre;
+
+    color: #8AFF5C;
+
+    user-select: none;
+
+    text-shadow:
+        0 0 12px
+        rgba(138,255,92,.15);
+
+}
+
+.post-coffee-status {
+
+    margin-top: 2rem;
+
+    color:
+        var(--color-primary);
+
+    font-size: .72rem;
+
+    font-weight: 700;
+
+    letter-spacing: .15em;
+
+}
+
+@keyframes postCoffeeModalIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(.96)
+            translateY(10px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+
+    }
+
+}
+
+@media (
+    max-width: 768px
+) {
+
+    .post-coffee-card {
+
+        width:
+            calc(100% - 2rem);
+
+        padding:
+            3rem
+            1.5rem;
+
+    }
+
+    .post-coffee-ascii {
+
+        font-size: .9rem;
+
+    }
+
+}
