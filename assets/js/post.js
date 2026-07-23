@@ -1397,6 +1397,14 @@ function createInteractiveTerminal(block) {
        
        }
 
+       if (value === "coffee") {
+          
+          createCoffeeModal();
+          
+          return;
+       
+       }
+
         const result =
             document.createElement("div");
 
@@ -3760,5 +3768,109 @@ function create2048Modal() {
 
 
     startGame();
+
+}
+
+function createCoffeeModal() {
+
+    if (document.querySelector(".post-coffee-modal")) {
+
+        return;
+
+    }
+
+    const modal = document.createElement("div");
+
+    modal.className = "post-coffee-modal";
+
+    modal.innerHTML = `
+
+        <div class="post-coffee-backdrop"></div>
+
+        <div class="post-coffee-card">
+
+            <button
+                class="post-coffee-close"
+                aria-label="Close"
+            >
+                ×
+            </button>
+
+            <div class="post-coffee-title">
+
+                COFFEE.EXE
+
+            </div>
+
+            <pre class="post-coffee-ascii"></pre>
+
+            <div class="post-coffee-status">
+
+                Coffee.exe is running...
+
+            </div>
+
+        </div>
+
+    `;
+
+    document.body.appendChild(modal);
+
+    const ascii = modal.querySelector(".post-coffee-ascii");
+
+    const frames = [
+
+`   ( (
+    ) )
+ ........
+ |      |]
+ \\      /
+  \`----'`,
+
+`    ( )
+   ( (
+    ) )
+ ........
+ |      |]
+ \\      /
+  \`----'`,
+
+`     )
+   ( (
+    ) )
+ ........
+ |      |]
+ \\      /
+  \`----'`
+
+    ];
+
+    let frame = 0;
+
+    ascii.textContent = frames[0];
+
+    const timer = setInterval(() => {
+
+        frame = (frame + 1) % frames.length;
+
+        ascii.textContent = frames[frame];
+
+    }, 250);
+
+    function close() {
+
+        clearInterval(timer);
+
+        modal.remove();
+
+    }
+
+    modal
+        .querySelector(".post-coffee-close")
+        .addEventListener("click", close);
+
+    modal
+        .querySelector(".post-coffee-backdrop")
+        .addEventListener("click", close);
 
 }
