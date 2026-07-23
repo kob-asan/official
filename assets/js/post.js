@@ -3791,12 +3791,13 @@ function createCoffeeModal() {
 
             <button
                 class="post-coffee-close"
+                type="button"
                 aria-label="Close"
             >
                 ×
             </button>
 
-            <div class="post-coffee-title">
+            <div class="post-coffee-label">
 
                 COFFEE.EXE
 
@@ -3806,7 +3807,7 @@ function createCoffeeModal() {
 
             <div class="post-coffee-status">
 
-                Coffee.exe is running...
+                Brewing coffee...
 
             </div>
 
@@ -3817,6 +3818,8 @@ function createCoffeeModal() {
     document.body.appendChild(modal);
 
     const ascii = modal.querySelector(".post-coffee-ascii");
+
+    const status = modal.querySelector(".post-coffee-status");
 
     const frames = [
 
@@ -3845,21 +3848,21 @@ function createCoffeeModal() {
 
     ];
 
-    let frame = 0;
+    let index = 0;
 
     ascii.textContent = frames[0];
 
-    const timer = setInterval(() => {
+    const interval = setInterval(() => {
 
-        frame = (frame + 1) % frames.length;
+        index = (index + 1) % frames.length;
 
-        ascii.textContent = frames[frame];
+        ascii.textContent = frames[index];
 
     }, 250);
 
-    function close() {
+    function closeCoffee() {
 
-        clearInterval(timer);
+        clearInterval(interval);
 
         modal.remove();
 
@@ -3867,10 +3870,39 @@ function createCoffeeModal() {
 
     modal
         .querySelector(".post-coffee-close")
-        .addEventListener("click", close);
+        .addEventListener(
+            "click",
+            closeCoffee
+        );
 
     modal
         .querySelector(".post-coffee-backdrop")
-        .addEventListener("click", close);
+        .addEventListener(
+            "click",
+            closeCoffee
+        );
+
+    document.addEventListener(
+        "keydown",
+        function handler(event) {
+
+            if (
+                event.key !== "Escape" ||
+                !document.body.contains(modal)
+            ) {
+
+                return;
+
+            }
+
+            document.removeEventListener(
+                "keydown",
+                handler
+            );
+
+            closeCoffee();
+
+        }
+    );
 
 }
