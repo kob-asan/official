@@ -3819,47 +3819,211 @@ function createCoffeeModal() {
 
     const ascii = modal.querySelector(".post-coffee-ascii");
 
-    const status = modal.querySelector(".post-coffee-status");
+const status = modal.querySelector(".post-coffee-status");
 
-    const frames = [
 
-`   )   
-   ( (
-    ) )
- ........
- |      |]
- \\      /
-  \`----'`,
+const brewingFrames = [
 
-`    ( )
-   ( (
-    ) )
- ........
- |      |]
- \\      /
-  \`----'`,
+`
+        ●
+       ● ●
+        ●
 
-`     )
-   ( (
-    ) )
- ........
- |      |]
- \\      /
-  \`----'`
 
-    ];
+     .-========-.
+    |          |
+    |          |
+    |          |
+     \\________/
+       |    |
+       |____|
 
-    let index = 0;
 
-    ascii.textContent = frames[0];
+     Adding beans...
+`,
 
-    const interval = setInterval(() => {
+`
+          ●
+        ●   ●
+          ●
 
-        index = (index + 1) % frames.length;
 
-        ascii.textContent = frames[index];
+     .-========-.
+    |          |
+    |    ●     |
+    |   ●●●    |
+     \\________/
+       |    |
+       |____|
 
-    }, 250);
+
+     Beans loaded...
+`,
+
+`
+          ||
+          ||
+       \\  ||  /
+          ||
+
+
+     .-========-.
+    |~~~~~~~~~~|
+    |   ●●●    |
+    |          |
+     \\________/
+       |    |
+       |____|
+
+
+     Pouring water...
+`,
+
+`
+          ||
+        \\ || /
+          ||
+
+
+     .-========-.
+    |~~~~~~~~~~|
+    | ~~~~~~~~ |
+    |   ●●     |
+     \\________/
+       |    |
+       |____|
+
+
+     Extracting...
+`,
+
+`
+        ~
+          ~
+
+     .-========-.
+    |~~~~~~~~~~|
+    | ~~~~~~~~ |
+    | ~~~~~~~~ |
+     \\________/
+       |    |
+       |____|
+
+
+     Brewing coffee...
+`
+
+];
+
+
+const steamFrames = [
+
+`
+          ~
+
+     .-========-.
+    |          |
+    |          |
+    |          |
+     \\________/
+       |    |
+       |____|
+
+
+     COFFEE IS READY
+`,
+
+`
+        ~
+          ~
+
+     .-========-.
+    |          |
+    |          |
+    |          |
+     \\________/
+       |    |
+       |____|
+
+
+     COFFEE IS READY
+`,
+
+`
+      ~     ~
+
+     .-========-.
+    |          |
+    |          |
+    |          |
+     \\________/
+       |    |
+       |____|
+
+
+     COFFEE IS READY
+`,
+
+`
+          ~
+
+        ~
+
+
+     .-========-.
+    |          |
+    |          |
+    |          |
+     \\________/
+       |    |
+       |____|
+
+
+     COFFEE IS READY
+`
+
+];
+
+
+let index = 0;
+
+ascii.textContent = brewingFrames[0];
+
+
+let brewInterval = setInterval(() => {
+
+    index++;
+
+    if(index < brewingFrames.length){
+
+        ascii.textContent = brewingFrames[index];
+
+    } else {
+
+        clearInterval(brewInterval);
+
+
+        let steamIndex = 0;
+
+
+        setInterval(() => {
+
+            ascii.textContent =
+                steamFrames[steamIndex];
+
+
+            steamIndex =
+                (steamIndex + 1) %
+                steamFrames.length;
+
+
+        }, 500);
+
+
+    }
+
+
+}, 700);
 
     function closeCoffee() {
 
