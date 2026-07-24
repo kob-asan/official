@@ -202,6 +202,10 @@ function createBlock(block) {
 
             return createInteractiveTerminal(block);
 
+      　case "toc":
+          
+          　 return createTOC(block);
+
         default:
 
             return document.createElement("div");
@@ -4069,5 +4073,97 @@ let brewInterval = setInterval(() => {
 
         }
     );
+
+}
+
+function createTOC(block) {
+
+    const toc =
+        document.createElement("nav");
+
+    toc.className =
+        "post-toc fade-in";
+
+    const title =
+        document.createElement("div");
+
+    title.className =
+        "post-toc-title";
+
+    title.textContent =
+        block.title ?? "CONTENTS";
+
+    toc.appendChild(title);
+
+
+    const list =
+        document.createElement("ol");
+
+    list.className =
+        "post-toc-list";
+
+
+    const headings =
+        document.querySelectorAll(
+            ".post-content h2, .post-content h3"
+        );
+
+
+    headings.forEach(
+        (heading, index) => {
+
+            if (!heading.id) {
+
+                heading.id =
+                    `post-heading-${index}`;
+
+            }
+
+
+            const item =
+                document.createElement("li");
+
+            item.className =
+                `post-toc-item post-toc-level-${heading.tagName.toLowerCase()}`;
+
+
+            const link =
+                document.createElement("a");
+
+            link.href =
+                `#${heading.id}`;
+
+            link.textContent =
+                heading.textContent;
+
+
+            link.addEventListener(
+                "click",
+                event => {
+
+                    event.preventDefault();
+
+
+                    heading.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+                }
+            );
+
+
+            item.appendChild(link);
+
+            list.appendChild(item);
+
+        }
+    );
+
+
+    toc.appendChild(list);
+
+
+    return toc;
 
 }
