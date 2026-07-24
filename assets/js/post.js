@@ -4076,36 +4076,53 @@ let brewInterval = setInterval(() => {
 
 }
 
-function createTOC(block) {
+function renderPost(post) {
 
-    const toc =
-        document.createElement("nav");
+    document.title =
+        `${post.title} | Kob_asan Official Site`;
 
-    toc.className =
-        "post-toc fade-in";
+    document.querySelector(".post-category").textContent =
+        post.category;
 
-    const title =
-        document.createElement("div");
+    document.querySelector(".post-title").textContent =
+        post.title;
 
-    title.className =
-        "post-toc-title";
-
-    title.textContent =
-        block.title ?? "CONTENTS";
-
-    toc.appendChild(title);
+    document.querySelector(".post-date").textContent =
+        formatDate(post.date);
 
 
-    const list =
-        document.createElement("ol");
+    const container =
+        document.querySelector(".post-content");
 
-    list.className =
-        "post-toc-list";
+    container.innerHTML = "";
 
+
+    // =========================
+    // 全ブロックを描画
+    // =========================
+
+    post.content.forEach(block => {
+
+        if (block.type === "toc") {
+
+            return;
+
+        }
+
+        container.appendChild(
+            createBlock(block)
+        );
+
+    });
+
+
+    // =========================
+    // 見出しにIDを付与
+    // =========================
 
     const headings =
-        document.querySelectorAll(
-            ".post-content h2, .post-content h3"
+        container.querySelectorAll(
+            "h2, h3"
         );
 
 
@@ -4119,6 +4136,88 @@ function createTOC(block) {
 
             }
 
+        }
+    );
+
+
+    // =========================
+    // 目次を生成
+    // =========================
+
+    const tocBlock =
+        post.content.find(
+            block =>
+                block.type === "toc"
+        );
+
+
+    if (tocBlock) {
+
+        const toc =
+            createTOC(
+                tocBlock,
+                headings
+            );
+
+
+        // 最初の位置に追加
+
+        container.prepend(
+            toc
+        );
+
+    }
+
+
+    refreshAnimations();
+
+}
+
+function createTOC(
+    block,
+    headings
+) {
+
+    const toc =
+        document.createElement("nav");
+
+    toc.className =
+        "post-toc fade-in";
+
+
+    // =========================
+    // タイトル
+    // =========================
+
+    const title =
+        document.createElement("div");
+
+    title.className =
+        "post-toc-title";
+
+    title.textContent =
+        block.title ??
+        "CONTENTS";
+
+
+    toc.appendChild(
+        title
+    );
+
+
+    // =========================
+    // リスト
+    // =========================
+
+    const list =
+        document.createElement("ol");
+
+    list.className =
+        "post-toc-list";
+
+
+    headings.forEach(
+        heading => {
 
             const item =
                 document.createElement("li");
@@ -4153,15 +4252,22 @@ function createTOC(block) {
             );
 
 
-            item.appendChild(link);
+            item.appendChild(
+                link
+            );
 
-            list.appendChild(item);
+
+            list.appendChild(
+                item
+            );
 
         }
     );
 
 
-    toc.appendChild(list);
+    toc.appendChild(
+        list
+    );
 
 
     return toc;
